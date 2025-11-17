@@ -1,5 +1,5 @@
-import logging
 import json
+import logging
 import sys
 from datetime import datetime
 
@@ -14,7 +14,7 @@ logger = logging.getLogger("app")
 
 def log(level: str, event: str, **kwargs):
     entry = {
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now().isoformat(),
         "level": level,
         "event": event,
         **kwargs

@@ -14,7 +14,7 @@ class ServidorRepository:
         return next((s for s in self.servidores if s.id == servidor_id), None)
 
     def add(self, data: ServidorIn) -> ServidorOut:
-        new_servidor = ServidorOut(id=self._next_id, **data.dict())
+        new_servidor = ServidorOut(id=self._next_id, **data.model_dump())
         self.servidores.append(new_servidor)
         self._next_id += 1
         return new_servidor
