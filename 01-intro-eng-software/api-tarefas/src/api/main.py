@@ -1,12 +1,9 @@
 from fastapi import FastAPI
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from src.logger import log_structured
 
 app = FastAPI(title="Gerenciador de tarefas")
 
 @app.get("/")
 def health_check():
-    logger.info("Health check")
+    log_structured("INFO", "health_check", endpoint="/")
     return {"status": "ok"}
