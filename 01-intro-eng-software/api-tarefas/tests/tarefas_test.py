@@ -4,17 +4,18 @@ from src.api.main import app
 client = TestClient(app)
 
 def test_criar():
-    payload = {"nome": "Joao da Silva", "carga_horaria": 40}
-    response = client.post("/api/v1/servidores", json=payload)
+    payload = {"descricao": "Responder e-mails", "horas_execucao": 2, "responsavel_id": 1}
+    response = client.post("/api/v1/tarefas", json=payload)
     assert response.status_code == 201
     data = response.json()
     assert data["id"] == 1
-    assert data["nome"] == "Joao da Silva"
-    assert data["carga_horaria"] == 40
+    assert data["descricao"] == "Responder e-mails"
+    assert data["horas_execucao"] == 2
+    assert data["responsavel_id"] == 1
 
 
-def test_listares():
-    response = client.get("/api/v1/servidores")
+def test_listar():
+    response = client.get("/api/v1/tarefas")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
@@ -22,17 +23,16 @@ def test_listares():
 
 
 def test_buscar():
-    response = client.get("/api/v1/servidores/1")
+    response = client.get("/api/v1/tarefas/1")
     assert response.status_code == 200
     data = response.json()
     assert data["id"] == 1
 
 
 def test_buscar_inexistente():
-    response = client.get("/api/v1/servidores/999")
+    response = client.get("/api/v1/tarefas/999")
     assert response.status_code == 404
 
-
 def test_deletar():
-    response = client.delete("/api/v1/servidores/1")
+    response = client.delete("/api/v1/tarefas/1")
     assert response.status_code == 204

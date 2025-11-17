@@ -1,5 +1,5 @@
 from typing import List, Optional
-from src.models.schemas import ServidorOut, ServidorIn
+from src.models.servidor_schema import ServidorOut, ServidorIn
 
 
 class ServidorRepository:
