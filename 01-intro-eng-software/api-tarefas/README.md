@@ -205,4 +205,5 @@ Este projeto serve como exercício introdutório de:
 
 - Criar camada de serviço
 - Criar um BaseRepository (ou CrudRepository) genérico que implementa os métodos básicos de CRUD (código repetido em servidor_repo e tarefa_repo)
+- Traduzir as mensagens de validação do Pydantic ou capturar seu error e tratar de forma customizada
 - ...
