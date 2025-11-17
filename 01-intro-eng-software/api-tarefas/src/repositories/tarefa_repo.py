@@ -10,8 +10,11 @@ class TarefaRepository:
     def find(self) -> List[TarefaOut]:
         return self.tarefas
 
-    def get(self, servidor_id: int) -> Optional[TarefaOut]:
-        return next((s for s in self.tarefas if s.id == servidor_id), None)
+    def find_by_servidor(self, servidor_id: int) -> List[TarefaOut]:
+        return [t for t in self.tarefas if t.responsavel_id == servidor_id]
+
+    def get(self, tarefa_id: int) -> Optional[TarefaOut]:
+        return next((s for s in self.tarefas if s.id == tarefa_id), None)
 
     def add(self, data: TarefaIn) -> TarefaOut:
         new_tarefa = TarefaOut(id=self._next_id, **data.model_dump())
@@ -19,8 +22,8 @@ class TarefaRepository:
         self._next_id += 1
         return new_tarefa
 
-    def delete(self, servidor_id: int):
-        self.tarefas = [s for s in self.tarefas if s.id != servidor_id]
+    def delete(self, tarefa_id: int):
+        self.tarefas = [s for s in self.tarefas if s.id != tarefa_id]
 
 # Instância global
 tarefa_repo = TarefaRepository()
