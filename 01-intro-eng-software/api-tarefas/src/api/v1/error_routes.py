@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from src.core.exceptions import BadRequestError, NotFoundError, UnauthorizedError
 
-router = APIRouter()
+router = APIRouter(tags=["Errors"])
 
 @router.get("/bad-request")
 def bad_request():
