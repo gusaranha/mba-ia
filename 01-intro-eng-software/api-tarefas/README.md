@@ -11,6 +11,10 @@ A API expõe endpoints para:
   - horas ainda disponíveis
   - porcentagem de ocupação da carga horária
 
+### Desenvolvedores
+
+- Gustavo Aranha Araújo Costa dos Reis
+
 ---
 
 ## Modelos de Dados (Schemas)
