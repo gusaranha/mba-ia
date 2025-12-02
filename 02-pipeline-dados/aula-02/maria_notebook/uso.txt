@@ -1,0 +1,10 @@
+# Comandos de uso
+
+# 1. Treinar o modelo
+python treinar_modelo.py
+
+# 2. Simular produção (mostra o problema)
+python script_producao.py
+
+# 3. Notebook Jupyter
+jupyter notebook notebook_maria.ipynb
