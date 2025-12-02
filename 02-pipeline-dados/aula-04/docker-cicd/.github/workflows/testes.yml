@@ -7,9 +7,9 @@ name: Testes Automáticos
 # QUANDO executar: em todo push ou pull request
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 # O QUE fazer:
 jobs:
