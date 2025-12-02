@@ -1,0 +1,13 @@
+# Manipulação de dados
+pandas
+numpy
+
+# Machine Learning
+scikit-learn
+
+# Visualização
+matplotlib
+
+# Jupyter (opcional - apenas para demo_8)
+jupyter
+notebook
