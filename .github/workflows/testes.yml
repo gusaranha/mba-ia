@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      # STEP 0: navegar para o diretório
+      - name: Navegar para o diretório
+        run: cd 02-pipeline-dados/aula-04/docker-cicd
+
       # STEP 1: Pegar o código
       - name: 📥 Baixar código
         uses: actions/checkout@v3
