@@ -1,0 +1,13 @@
+# ML
+scikit-learn
+pandas
+numpy
+xgboost
+
+# MLflow
+mlflow
+
+# API
+fastapi
+uvicorn[standard]
+pydantic

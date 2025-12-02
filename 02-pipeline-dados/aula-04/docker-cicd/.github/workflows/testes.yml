@@ -1,0 +1,51 @@
+# ==================================================
+# GITHUB ACTIONS - Testes Automáticos
+# ==================================================
+
+name: Testes Automáticos
+
+# QUANDO executar: em todo push ou pull request
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# O QUE fazer:
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # STEP 1: Pegar o código
+      - name: 📥 Baixar código
+        uses: actions/checkout@v3
+      
+      # STEP 2: Instalar Python
+      - name: 🐍 Instalar Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      # STEP 3: Instalar bibliotecas
+      - name: 📦 Instalar dependências
+        run: |
+          pip install -r requirements.txt
+      
+      # STEP 4: VALIDAR DADOS (Pandera)
+      - name: ✅ Validar dados dos clientes
+        run: |
+          python validador.py
+      
+      # STEP 5: RODAR TESTES (pytest)
+      - name: 🧪 Rodar testes da calculadora
+        run: |
+          pytest test_calculadora.py -v
+
+# ==================================================
+# RESULTADO:
+# - Se TODOS steps passarem: ✅ Sucesso
+# - Se ALGUM falhar: ❌ Falha (não permite merge)
+#
+# Ver em: github.com/[seu-repo]/actions
+# ==================================================

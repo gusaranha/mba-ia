@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detecção de Fraudes - Sistema Bancário</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .resultado {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fraude {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+        }
+        .legit {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            color: white;
+        }
+        .resultado h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .prob-container {
+            margin: 15px 0;
+        }
+        .prob-label {
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        .prob-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .prob-fill {
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            transition: width 0.6s ease;
+        }
+        .metadata {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .error {
+            background: #fff3f3;
+            border: 2px solid #ff6b6b;
+            color: #c92a2a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Detecção de Fraudes</h1>
+        <p class="subtitle">Sistema Bancário 2025</p>
+        
+        <form id="form">
+            <div class="form-group">
+                <label>💰 Valor da Transação (R$)</label>
+                <input type="number" id="valor" step="0.01" min="0" value="8500" required>
+            </div>
+            
+            <div class="form-group">
+                <label>🕐 Hora da Transação</label>
+                <input type="number" id="hora" min="0" max="23" value="2" required>
+            </div>
+            
+            <div class="form-group">
+                <label>🏷️ Categoria</label>
+                <select id="categoria" required>
+                    <option value="alimentacao">Alimentação</option>
+                    <option value="farmacia">Farmácia</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="vestuario">Vestuário</option>
+                    <option value="restaurante">Restaurante</option>
+                    <option value="lazer">Lazer</option>
+                    <option value="eletronicos" selected>Eletrônicos</option>
+                    <option value="livros">Livros</option>
+                    <option value="assinatura">Assinatura</option>
+                    <option value="supermercado">Supermercado</option>
+                    <option value="joias">Joias</option>
+                    <option value="viagem">Viagem</option>
+                    <option value="pix">PIX</option>
+                    <option value="transferencia">Transferência</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>📊 Transações nas últimas 24h</label>
+                <input type="number" id="qtd" min="0" value="18" required>
+            </div>
+            
+            <button type="submit" id="btnAnalisar">🔍 Analisar Transação</button>
+        </form>
+        
+        <div id="resultado" class="resultado">
+            <h2 id="status"></h2>
+            <div class="prob-container">
+                <div class="prob-label">Probabilidade de fraude: <strong id="prob"></strong>%</div>
+                <div class="prob-bar">
+                    <div id="prob-fill" class="prob-fill"></div>
+                </div>
+            </div>
+            <div class="metadata" id="metadata"></div>
+        </div>
+        
+        <div id="error" class="error"></div>
+    </div>
+    
+    <script>
+        const API_URL = 'http://localhost:8000';
+        
+        document.getElementById('form').onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const btn = document.getElementById('btnAnalisar');
+            const errorDiv = document.getElementById('error');
+            const resultadoDiv = document.getElementById('resultado');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ Analisando...';
+            errorDiv.style.display = 'none';
+            resultadoDiv.style.display = 'none';
+            
+            const dados = {
+                valor: parseFloat(document.getElementById('valor').value),
+                hora: parseInt(document.getElementById('hora').value),
+                categoria: document.getElementById('categoria').value,
+                qtd_transacoes_24h: parseInt(document.getElementById('qtd').value)
+            };
+            
+            try {
+                const resp = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(dados)
+                });
+                
+                if (!resp.ok) {
+                    const err = await resp.json();
+                    throw new Error(err.detail || 'Erro na API');
+                }
+                
+                const result = await resp.json();
+                
+                // Exibir resultado
+                resultadoDiv.style.display = 'block';
+                
+                if (result.fraude) {
+                    resultadoDiv.className = 'resultado fraude';
+                    document.getElementById('status').textContent = '🚨 FRAUDE DETECTADA';
+                } else {
+                    resultadoDiv.className = 'resultado legit';
+                    document.getElementById('status').textContent = '✅ Transação Aprovada';
+                }
+                
+                const probValue = (result.probabilidade * 100).toFixed(1);
+                document.getElementById('prob').textContent = probValue;
+                document.getElementById('prob-fill').style.width = probValue + '%';
+                
+                document.getElementById('metadata').innerHTML = `
+                    Modelo: ${result.modelo.versao} | 
+                    F1: ${(result.modelo.f1_score * 100).toFixed(1)}% | 
+                    Deploy: ${result.modelo.deploy_date}
+                `;
+                
+            } catch (error) {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = `❌ ${error.message}. Verifique se a API está rodando em ${API_URL}`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔍 Analisar Transação';
+            }
+        };
+    </script>
+</body>
+</html>

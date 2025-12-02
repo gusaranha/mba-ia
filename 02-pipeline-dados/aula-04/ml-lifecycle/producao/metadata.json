@@ -1,0 +1,18 @@
+{
+  "versao": "v2.0",
+  "data_deploy": "2025-12-02",
+  "data_treino": "outubro_novembro_2025",
+  "algoritmo": "GradientBoosting (n=100, lr=0.1)",
+  "f1_score": 0.9431438127090301,
+  "precision": 0.9463087248322147,
+  "recall": 0.94,
+  "run_id": "586d5298d4734c729e32c52dbd05710c",
+  "n_transacoes_treino": 4000,
+  "taxa_fraude_treino": 0.125,
+  "changelog": [
+    "Retreinado com dados Out+Nov (4000 registros)",
+    "Taxa de fraude ajustada: 12.5%",
+    "Novos padr\u00f5es incorporados",
+    "Performance: -1.4% vs v1.0"
+  ]
+}
