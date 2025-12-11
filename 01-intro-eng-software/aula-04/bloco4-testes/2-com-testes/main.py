@@ -1,0 +1,80 @@
+"""
+API de Detecção de Fraude - COM TESTES
+Protegido: Testes garantem que as regras de negócio são respeitadas
+"""
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI(title="API Fraude - Com Testes")
+
+
+class Transacao(BaseModel):
+    valor: float
+    hora_do_dia: int
+    distancia_ultima_compra_km: float
+    numero_transacoes_hoje: int
+    idade_conta_dias: int
+
+
+class ResultadoAnalise(BaseModel):
+    fraude: bool
+    confianca: float
+    motivo: str
+
+
+@app.get("/")
+def root():
+    return {"status": "API rodando", "versao": "1.0-com-testes"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
+
+
+@app.post("/analisar", response_model=ResultadoAnalise)
+def analisar_transacao(transacao: Transacao):
+    """
+    Analisa uma transação e retorna se é fraude.
+    
+    Regra de negócio: Transações > R$ 10.000 são consideradas fraude
+    """
+    # Processar valor
+    valor_processado = float(transacao.valor)
+    
+    # Regra de negócio crítica
+    if valor_processado > 10000:
+        return ResultadoAnalise(
+            fraude=True,
+            confianca=0.95,
+            motivo="Valor acima do threshold de R$ 10.000"
+        )
+    
+    # Verificar horário suspeito
+    if transacao.hora_do_dia < 6 or transacao.hora_do_dia > 23:
+        return ResultadoAnalise(
+            fraude=True,
+            confianca=0.85,
+            motivo="Transação em horário suspeito"
+        )
+    
+    # Verificar distância
+    if transacao.distancia_ultima_compra_km > 500:
+        return ResultadoAnalise(
+            fraude=True,
+            confianca=0.80,
+            motivo="Distância muito grande da última compra"
+        )
+    
+    # Transação legítima
+    return ResultadoAnalise(
+        fraude=False,
+        confianca=0.90,
+        motivo="Transação dentro dos padrões normais"
+    )
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

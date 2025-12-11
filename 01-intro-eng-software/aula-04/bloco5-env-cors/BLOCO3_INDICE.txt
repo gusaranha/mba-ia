@@ -1,0 +1,140 @@
+╔══════════════════════════════════════════════════════════════════╗
+║           BLOCO 3: VARIÁVEIS DE AMBIENTE E CORS                  ║
+║                    Material Completo                             ║
+╚══════════════════════════════════════════════════════════════════╝
+
+📦 ESTRUTURA DE ARQUIVOS
+═══════════════════════════════════════════════════════════════════
+
+📁 bloco3-env-cors/
+│
+├── 📄 README.md                    → Visão geral do bloco
+├── 📄 MATERIAL_RESUMO.md           → Resumo executivo do material
+│
+├── 📁 1-sem-env/                   ❌ PROBLEMA: Hardcode
+│   ├── 🐍 main.py                  → API com configs fixas no código
+│   └── 📖 README.md                → Explicação dos problemas
+│
+├── 📁 2-com-env/                   ✅ SOLUÇÃO: Variáveis de Ambiente
+│   ├── 🐍 main.py                  → API usando .env
+│   ├── ⚙️  .env.example            → Template de configuração
+│   ├── 🚫 .gitignore               → Proteção de segredos
+│   └── 📖 README.md                → Guia passo a passo
+│
+├── 📁 3-com-cors/                  ✅ COMPLETO: .env + CORS
+│   ├── 🐍 main.py                  → API com .env e CORS
+│   ├── ⚙️  .env.example            → Template com CORS
+│   ├── 🚫 .gitignore               → Proteção de segredos
+│   ├── 🌐 test_cors.html           → Ferramenta de teste
+│   └── 📖 README.md                → Guia completo
+│
+└── 📁 guias/                       📚 DOCUMENTAÇÃO TÉCNICA
+    ├── 📘 guia-env.md              → Guia completo de .env
+    └── 📘 guia-cors.md             → Guia completo de CORS
+
+═══════════════════════════════════════════════════════════════════
+📊 ESTATÍSTICAS DO MATERIAL
+═══════════════════════════════════════════════════════════════════
+
+Total de arquivos:           13
+Linhas de código Python:     ~380
+Linhas de HTML:              ~200
+Páginas de documentação:     ~32
+Exercícios sugeridos:        9
+Tempo estimado de estudo:    2-3 horas
+
+═══════════════════════════════════════════════════════════════════
+🎯 O QUE OS ALUNOS VÃO APRENDER
+═══════════════════════════════════════════════════════════════════
+
+VARIÁVEIS DE AMBIENTE (.env)
+├── ✅ O que são e por que usar
+├── ✅ Como implementar com python-dotenv
+├── ✅ Proteger segredos (.gitignore)
+├── ✅ Documentar com .env.example
+└── ✅ Configurar ambientes diferentes
+
+CORS (Cross-Origin Resource Sharing)
+├── ✅ O que é CORS e por que existe
+├── ✅ Configurar CORS no FastAPI
+├── ✅ Desenvolvimento vs Produção
+├── ✅ Testar CORS com HTML
+└── ✅ Segurança em produção
+
+═══════════════════════════════════════════════════════════════════
+🚀 SEQUÊNCIA DE USO
+═══════════════════════════════════════════════════════════════════
+
+PARA ALUNOS:
+1️⃣  Ler README.md principal
+2️⃣  Rodar exemplo 1-sem-env/ (ver o problema)
+3️⃣  Rodar exemplo 2-com-env/ (aprender .env)
+4️⃣  Rodar exemplo 3-com-cors/ (adicionar CORS)
+5️⃣  Testar com test_cors.html
+6️⃣  Consultar guias/ quando tiver dúvidas
+7️⃣  Aplicar no projeto final
+
+PARA INSTRUTOR:
+1️⃣  Preparar ambiente (uvicorn, python-dotenv)
+2️⃣  Demonstrar 1-sem-env/ (10 min)
+3️⃣  Demonstrar 2-com-env/ (15 min)
+4️⃣  Demonstrar 3-com-cors/ (15 min)
+5️⃣  Testar CORS ao vivo com HTML (10 min)
+6️⃣  Destacar boas práticas de segurança
+7️⃣  Q&A (10 min)
+
+═══════════════════════════════════════════════════════════════════
+📋 DEPENDÊNCIAS
+═══════════════════════════════════════════════════════════════════
+
+pip install fastapi uvicorn python-dotenv
+
+Versões testadas:
+- Python: 3.10+
+- FastAPI: 0.104+
+- uvicorn: 0.24+
+- python-dotenv: 1.0+
+
+═══════════════════════════════════════════════════════════════════
+✅ CHECKLIST DE QUALIDADE
+═══════════════════════════════════════════════════════════════════
+
+CÓDIGO
+[✓] Todos os exemplos testados e funcionando
+[✓] Comentários explicativos
+[✓] Boas práticas aplicadas
+[✓] Código limpo e legível
+
+DOCUMENTAÇÃO
+[✓] README em cada pasta
+[✓] Guias técnicos completos
+[✓] Exemplos do mundo real
+[✓] Troubleshooting incluído
+
+PEDAGOGIA
+[✓] Progressão clara (problema → solução)
+[✓] Exemplos práticos
+[✓] Exercícios sugeridos
+[✓] Referências para estudo
+
+═══════════════════════════════════════════════════════════════════
+🎓 CONCEITOS-CHAVE
+═══════════════════════════════════════════════════════════════════
+
+❌ NUNCA:
+• Commitar .env no Git
+• Usar allow_origins=["*"] em produção
+• Hardcodar senhas no código
+
+✅ SEMPRE:
+• Usar .env.example como template
+• Adicionar .env no .gitignore
+• Especificar origens CORS em produção
+• Documentar variáveis necessárias
+
+═══════════════════════════════════════════════════════════════════
+
+Material desenvolvido para:
+📚 Aula 4 - Controle de Qualidade
+🎓 MBA IA Generativa - IBMEC
+📅 Novembro 2024

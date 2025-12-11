@@ -1,0 +1,114 @@
+## 🔴 TRANSAÇÕES FRAUDULENTAS (Alto Risco)
+
+### Exemplo 6: Padrão típico de fraude
+
+```json
+{
+  "Time": 150200.80,
+  "V1": 3.45,
+  "V2": -3.22,
+  "V3": 2.87,
+  "V4": -2.65,
+  "V5": 3.12,
+  "V6": -2.91,
+  "V7": 2.54,
+  "V8": -4.15,
+  "V9": 2.98,
+  "V10": -3.33,
+  "Amount": 892.30
+}
+```
+
+**Esperado:** FRAUDULENTA, probabilidade > 70%
+
+---
+
+### Exemplo 7: Valores e padrões atípicos
+
+```json
+{
+  "Time": 165450.25,
+  "V1": 4.78,
+  "V2": -4.66,
+  "V3": 3.92,
+  "V4": -3.28,
+  "V5": 4.52,
+  "V6": -3.84,
+  "V7": 3.45,
+  "V8": -5.99,
+  "V9": 4.02,
+  "V10": -4.57,
+  "Amount": 1245.67
+}
+```
+
+**Esperado:** FRAUDULENTA, probabilidade > 80%
+
+---
+
+### Exemplo 8: Fraude internacional
+
+```json
+{
+  "Time": 171800.50,
+  "V1": 5.23,
+  "V2": -5.11,
+  "V3": 4.67,
+  "V4": -4.15,
+  "V5": 4.89,
+  "V6": -4.52,
+  "V7": 4.23,
+  "V8": -6.78,
+  "V9": 4.91,
+  "V10": -5.12,
+  "Amount": 2150.00
+}
+```
+
+**Esperado:** FRAUDULENTA, probabilidade > 85%
+
+---
+
+## 📊 CASOS ESPECIAIS PARA DISCUSSÃO
+
+### Caso 9: Valor baixo mas padrão suspeito
+
+```json
+{
+  "Time": 145300.75,
+  "V1": 2.85,
+  "V2": -2.93,
+  "V3": 2.12,
+  "V4": -2.35,
+  "V5": 2.67,
+  "V6": -2.41,
+  "V7": 2.18,
+  "V8": -3.52,
+  "V9": 2.44,
+  "V10": -2.88,
+  "Amount": 15.50
+}
+```
+
+**Discussão:** Valor baixo pode mascarar teste de fraude antes de grandes compras
+
+---
+
+### Caso 10: Alto valor mas cliente VIP legítimo
+
+```json
+{
+  "Time": 95200.40,
+  "V1": 0.95,
+  "V2": -0.88,
+  "V3": 0.72,
+  "V4": -0.65,
+  "V5": 0.84,
+  "V6": -0.55,
+  "V7": 0.68,
+  "V8": -1.12,
+  "V9": 0.77,
+  "V10": -0.93,
+  "Amount": 3500.00
+}
+```

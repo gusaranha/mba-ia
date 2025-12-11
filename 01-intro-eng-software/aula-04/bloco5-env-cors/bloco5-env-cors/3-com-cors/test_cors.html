@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de CORS - Fraud Detection API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        #resultado {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid #e9ecef;
+        }
+        
+        .success {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .error {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        
+        .info {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .info strong {
+            color: #1976d2;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success {
+            background-color: #28a745;
+            box-shadow: 0 0 10px #28a745;
+        }
+        
+        .status-error {
+            background-color: #dc3545;
+            box-shadow: 0 0 10px #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Teste de CORS</h1>
+        <p class="subtitle">Fraud Detection API</p>
+        
+        <div class="section">
+            <h2 class="section-title">Testes Disponíveis</h2>
+            
+            <button onclick="testarHealthCheck()">
+                ✅ Testar Health Check
+            </button>
+            
+            <button onclick="testarConfig()">
+                ⚙️ Testar Configurações
+            </button>
+            
+            <button onclick="testarPredict()">
+                🔍 Testar Predição de Fraude
+            </button>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Resultado</h2>
+            <div id="resultado">
+Clique em um botão acima para testar a API...
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>ℹ️ Como funciona:</strong><br>
+            Este HTML está fazendo requisições para http://localhost:8000<br>
+            Se CORS estiver configurado, as requisições funcionarão.<br>
+            Caso contrário, você verá um erro "CORS policy".
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+        const resultadoDiv = document.getElementById('resultado');
+        
+        function mostrarResultado(texto, tipo = 'info') {
+            const statusClass = tipo === 'success' ? 'status-success' : 
+                               tipo === 'error' ? 'status-error' : '';
+            const indicator = statusClass ? `<span class="status-indicator ${statusClass}"></span>` : '';
+            resultadoDiv.innerHTML = `${indicator}${texto}`;
+        }
+        
+        async function testarHealthCheck() {
+            mostrarResultado('🔄 Testando Health Check...');
+            
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                mostrarResultado(
+                    `<span class="success">✅ SUCESSO! CORS está funcionando!</span>\n\n` +
+                    `Health Check:\n` +
+                    JSON.stringify(data, null, 2),
+                    'success'
+                );
+            } catch (error) {
+                mostrarResultado(
+                    `<span class="error">❌ ERRO!</span>\n\n` +
+                    `${error.message}\n\n` +
+                    `Possíveis causas:\n` +
+                    `1. API não está rodando (rode: uvicorn main:app --reload)\n` +
+                    `2. CORS não está configurado\n` +
+                    `3. URL incorreta (verifique se é http://localhost:8000)`,
+                    'error'
+                );
+            }
+        }
+        
+        async function testarConfig() {
+            mostrarResultado('🔄 Testando Configurações...');
+            
+            try {
+                const response = await fetch(`${API_URL}/config`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                mostrarResultado(
+                    `<span class="success">✅ SUCESSO! CORS está funcionando!</span>\n\n` +
+                    `Configurações da API:\n` +
+                    JSON.stringify(data, null, 2),
+                    'success'
+                );
+            } catch (error) {
+                mostrarResultado(
+                    `<span class="error">❌ ERRO!</span>\n\n` +
+                    `${error.message}`,
+                    'error'
+                );
+            }
+        }
+        
+        async function testarPredict() {
+            mostrarResultado('🔄 Testando Predição...');
+            
+            const transacao = {
+                valor: 15000,
+                hora_do_dia: 14,
+                distancia_ultima_compra_km: 100,
+                numero_transacoes_hoje: 5,
+                idade_conta_dias: 90
+            };
+            
+            try {
+                const response = await fetch(`${API_URL}/predict`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(transacao)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                mostrarResultado(
+                    `<span class="success">✅ SUCESSO! CORS está funcionando!</span>\n\n` +
+                    `Transação enviada:\n` +
+                    JSON.stringify(transacao, null, 2) + `\n\n` +
+                    `Resposta da API:\n` +
+                    JSON.stringify(data, null, 2),
+                    'success'
+                );
+            } catch (error) {
+                mostrarResultado(
+                    `<span class="error">❌ ERRO!</span>\n\n` +
+                    `${error.message}`,
+                    'error'
+                );
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Dependências da Aula 4 - Controle de Qualidade
+
+# Framework Web
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+
+# Variáveis de Ambiente
+python-dotenv==1.0.0
+
+# Testes
+pytest==7.4.3
+httpx==0.25.2  # Para TestClient do FastAPI
+
+# Logs Estruturados
+python-json-logger==2.0.7
+
+# Utilitários
+python-multipart==0.0.6  # Para upload de arquivos (opcional)

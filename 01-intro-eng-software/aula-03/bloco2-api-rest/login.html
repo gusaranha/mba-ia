@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Login - Validação Backend</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #resultado {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+    .sucesso {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .erro {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .info {
+      background-color: #d1ecf1;
+      color: #0c5460;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔐 Sistema de Login</h2>
+    
+    <input type="text" id="usuario" placeholder="Usuário" autocomplete="username">
+    <input type="password" id="senha" placeholder="Senha" autocomplete="current-password">
+    <button onclick="fazerLogin()">Entrar</button>
+
+    <div id="resultado"></div>
+
+    <div class="info">
+      <strong>Credenciais de teste:</strong><br>
+      • admin / senha123<br>
+      • joao / abc456
+    </div>
+  </div>
+
+  <script>
+    async function fazerLogin() {
+      const usuario = document.getElementById('usuario').value;
+      const senha = document.getElementById('senha').value;
+      const resultado = document.getElementById('resultado');
+
+      if (!usuario || !senha) {
+        mostrarResultado('⚠️ Preencha todos os campos', 'erro');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8000/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({usuario, senha})
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          mostrarResultado(data.mensagem, 'sucesso');
+        } else {
+          mostrarResultado(data.detail || '❌ Login inválido', 'erro');
+        }
+      } catch (error) {
+        mostrarResultado('❌ Erro de conexão. API rodando?', 'erro');
+      }
+    }
+
+    function mostrarResultado(mensagem, tipo) {
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = mensagem;
+      resultado.className = tipo;
+      resultado.style.display = 'block';
+    }
+
+    document.getElementById('senha').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') fazerLogin();
+    });
+  </script>
+</body>
+</html>
