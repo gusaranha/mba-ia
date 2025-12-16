@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-Black;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red131\green0\blue165;\red255\green255\blue255;
+\red251\green2\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c59216\c13725\c70588;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c100000\c25279\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29200\viewh18380\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1. Importar bibliotecas e carregar o dataset CIFAR-10\
+\cf3 \cb4 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+\cf3 import tensorflow as tf\
+import matplotlib.pyplot as plt\
+import numpy as np\
+\
+# Carregar dataset CIFAR-10\
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()\
+\
+# Normalizar valores dos pixels para o intervalo 0-1\
+x_train = x_train / 255.0\
+x_test = x_test / 255.0\
+\
+# Nomes das classes\
+class_names = [\
+    'avi\'e3o', 'carro', 'p\'e1ssaro', 'gato', 'cervo',\
+    'cachorro', 'sapo', 'cavalo', 'navio', 'caminh\'e3o'\
+]\
+\
+print("Dataset carregado com sucesso!")\
+print("Formato do treino:", x_train.shape)\
+print("Formato do teste:", x_test.shape)\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \strokec2 2. Mostrar 9 imagens do dataset (visualiza\'e7\'e3o inicial)\
+\
+\cf5 plt.figure(figsize=(8, 8))\
+\
+for i in range(9):\
+    plt.subplot(3, 3, i + 1)\
+    plt.imshow(x_train[i])\
+    plt.title(class_names[y_train[i][0]])\
+    plt.axis('off')\
+\
+plt.show()\cf0 \
+\
+\pard\pardeftab720\sa321\partightenfactor0
+\cf0 \strokec2 3. Criar o modelo CNN (Rede Neural Convolucional)\
+\cf5 model = tf.keras.Sequential([\
+    tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),\
+    tf.keras.layers.MaxPooling2D((2, 2)),\
+\
+    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),\
+    tf.keras.layers.MaxPooling2D((2, 2)),\
+\
+    tf.keras.layers.Flatten(),\
+    tf.keras.layers.Dense(64, activation='relu'),\
+    tf.keras.layers.Dense(10, activation='softmax')\
+])\
+\
+model.compile(\
+    optimizer='adam',\
+    loss='sparse_categorical_crossentropy',\
+    metrics=['accuracy']\
+)\
+\cf0 \
+\cf5 model.summary()\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \strokec2 4. Treinar o modelo\
+\
+\cf5 history = model.fit(\
+    x_train,\
+    y_train,\
+    epochs=3,\
+    validation_split=0.1\
+)\
+\cf0 \strokec2 \
+\strokec2 5. Avaliar o modelo com dados de teste\
+test_loss, test_acc = model.evaluate(x_test, y_test)\
+\
+\cf5 print("Acur\'e1cia no conjunto de teste:", test_acc)\
+\cf0 \
+6. Fazer uma previs\'e3o com uma imagem aleat\'f3ria\
+\cf5 # Escolher uma imagem aleat\'f3ria do conjunto de teste\
+index = np.random.randint(0, len(x_test))\
+img = x_test[index]\
+\
+# Mostrar a imagem\
+plt.imshow(img)\
+plt.title("Imagem escolhida")\
+plt.axis('off')\
+plt.show()\
+\
+# Preparar imagem para previs\'e3o\
+img = np.expand_dims(img, axis=0)\
+\
+# Fazer previs\'e3o\
+prediction = model.predict(img)\
+predicted_class = np.argmax(prediction)\
+\
+print("Classe prevista:", class_names[predicted_class])\
+print("Classe correta:", class_names[y_test[index][0]])\
+\strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \strokec2 \
+}
