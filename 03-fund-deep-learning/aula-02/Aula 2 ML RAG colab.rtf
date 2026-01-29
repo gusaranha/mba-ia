@@ -1,0 +1,386 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\froman\fcharset0 Times-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red34\green255\blue6;\red36\green255\blue255;
+\red0\green0\blue0;\red251\green0\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c100000\c0;\cssrgb\c4983\c100000\c100000;
+\cssrgb\c0\c1\c1;\cssrgb\c100000\c7248\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29200\viewh18460\viewkind0
+\deftab720
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Triagem Inteligente de Ocorr\'eancias com IA\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\fs28 \cf0 O que iremos construir\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Um 
+\f0\b classificador de prioridade
+\f1\b0  (Baixa/M\'e9dia/Alta) com Machine Learning\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Um 
+\f0\b mini-RAG
+\f1\b0  que responde perguntas usando uma \'93base de conhecimento\'94 (texto) de procedimentos (fict\'edcios/did\'e1ticos)\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 Parte 0 \'97 Prepara\'e7\'e3o (5 min)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 \strokec2 Objetivo:
+\f1\b0  garantir que todo mundo est\'e1 rodando.\
+No Colab: criar um notebook e rodar,\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf3 \strokec2 Copiar c\'f3digo:\cf0 \strokec2 \
+import pandas as pd\
+import numpy as np\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b \cf4 \strokec2 Explica\'e7\'e3o:
+\f1\b0 \cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b \cf0 \strokec2 Notebook
+\f1\b0  = caderno execut\'e1vel (texto + c\'f3digo)\
+
+\f0\b IA
+\f1\b0  aqui ser\'e1 usada em dois modos:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ML (classifica\'e7\'e3o)\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 RAG (buscar informa\'e7\'e3o + gerar resposta)\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Parte 1 Criando um dataset sint\'e9tico de ocorr\'eancias \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 \strokec2 Objetivo:
+\f1\b0  mostrar a diferen\'e7a entre \'93dado\'94 e \'93informa\'e7\'e3o\'94 e evitar usar dados reais.\
+\cf3 \strokec2 Copiar c\'f3digo:\cf0 \strokec2 \
+import pandas as pd\
+import numpy as np\
+\
+np.random.seed(42)\
+\
+tipos = ["Furto", "Roubo", "Amea\'e7a", "Viol\'eancia Dom\'e9stica", "Estelionato", "Tr\'e1fico", "Homic\'eddio (tentativa)"]\
+locais = ["Asa Norte", "Asa Sul", "Ceil\'e2ndia", "Taguatinga", "Samambaia", "Planaltina", "Sobradinho"]\
+periodos = ["Madrugada", "Manh\'e3", "Tarde", "Noite"]\
+\
+def gerar_descricao(tipo):\
+    base = \{\
+        "Furto": "Relato de subtra\'e7\'e3o sem viol\'eancia.",\
+        "Roubo": "Relato de subtra\'e7\'e3o com amea\'e7a/viol\'eancia.",\
+        "Amea\'e7a": "Relato de amea\'e7a verbal ou por mensagens.",\
+        "Viol\'eancia Dom\'e9stica": "Relato de agress\'e3o/amea\'e7a em contexto dom\'e9stico.",\
+        "Estelionato": "Relato de golpe por aplicativo, pix ou cart\'e3o.",\
+        "Tr\'e1fico": "Relato de poss\'edvel comercializa\'e7\'e3o de entorpecentes.",\
+        "Homic\'eddio (tentativa)": "Relato de agress\'e3o grave com risco \'e0 vida."\
+    \}\
+    return base.get(tipo, "Relato de ocorr\'eancia.")\
+\
+n = 200\
+df = pd.DataFrame(\{\
+    "tipo": np.random.choice(tipos, n),\
+    "local": np.random.choice(locais, n),\
+    "periodo": np.random.choice(periodos, n),\
+    "tem_arma": np.random.choice([0,1], n, p=[0.85, 0.15]),\
+    "vitima_ferida": np.random.choice([0,1], n, p=[0.75, 0.25]),\
+    "historico_reincidencia": np.random.choice([0,1], n, p=[0.7, 0.3])\
+\})\
+\
+df["descricao"] = df["tipo"].apply(gerar_descricao)\
+\
+# Regra did\'e1tica para gerar "prioridade" (alvo)\
+def definir_prioridade(row):\
+    score = 0\
+    if row["tipo"] in ["Homic\'eddio (tentativa)", "Tr\'e1fico", "Viol\'eancia Dom\'e9stica", "Roubo"]:\
+        score += 2\
+    if row["tem_arma"] == 1:\
+        score += 2\
+    if row["vitima_ferida"] == 1:\
+        score += 2\
+    if row["historico_reincidencia"] == 1:\
+        score += 1\
+    \
+    if score >= 5:\
+        return "Alta"\
+    elif score >= 3:\
+        return "M\'e9dia"\
+    else:\
+        return "Baixa"\
+\
+df["prioridade"] = df.apply(definir_prioridade, axis=1)\
+\
+df.head(10)\
+\
+
+\f0\b \cf4 \strokec2 Explica\'e7\'e3o:
+\f1\b0 \cf0 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls3\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Isso simula um cen\'e1rio real de triagem, mas 
+\f0\b sem dados reais
+\f1\b0 .\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 O alvo \'93prioridade\'94 foi criado por regra isso \'e9 
+\f0\b supervisionado
+\f1\b0  (tem resposta certa).\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Parte 2  Treinar um modelo de ML para prever prioridade \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 \strokec2 Objetivo:
+\f1\b0  ensinar pipeline de ML (preparo \uc0\u8594  treino \u8594  teste \u8594  m\'e9trica).\
+\cf3 \strokec2 Copiar c\'f3digo\cf0 \strokec2 \
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 from sklearn.model_selection import train_test_split\
+from sklearn.preprocessing import OneHotEncoder\
+from sklearn.compose import ColumnTransformer\
+from sklearn.pipeline import Pipeline\
+from sklearn.metrics import classification_report, confusion_matrix\
+from sklearn.ensemble import RandomForestClassifier\
+\
+X = df[["tipo","local","periodo","tem_arma","vitima_ferida","historico_reincidencia"]]\
+y = df["prioridade"]\
+\
+# colunas categ\'f3ricas e num\'e9ricas\
+cat_cols = ["tipo","local","periodo"]\
+num_cols = ["tem_arma","vitima_ferida","historico_reincidencia"]\
+\
+preprocess = ColumnTransformer(\
+    transformers=[\
+        ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),\
+        ("num", "passthrough", num_cols)\
+    ]\
+)\
+\
+model = RandomForestClassifier(n_estimators=200, random_state=42)\
+\
+pipe = Pipeline(steps=[\
+    ("prep", preprocess),\
+    ("model", model)\
+])\
+\
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)\
+\
+pipe.fit(X_train, y_train)\
+pred = pipe.predict(X_test)\
+\
+print(classification_report(y_test, pred))\
+print("Matriz de confus\'e3o:\\n", confusion_matrix(y_test, pred))\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf4 \strokec2 Explica\'e7\'e3o:\cf0 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls4\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 OneHotEncoder
+\f1\b0 : transforma texto (\'93tipo/local\'94) em n\'fameros\
+\ls4\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Treino vs Teste
+\f1\b0 : mede se aprendeu mesmo\
+\ls4\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Relat\'f3rio
+\f1\b0 : precis\'e3o/recall por classe (Alta/M\'e9dia/Baixa)\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Parte 3  Testar com uma ocorr\'eancia \'93nova\'94 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 \strokec2 Objetivo:
+\f1\b0  deixar tang\'edvel.\
+\cf3 \strokec2 Copiar c\'f3digo:\
+\cf5 nova = pd.DataFrame([\{\
+    "tipo": "Viol\'eancia Dom\'e9stica",\
+    "local": "Ceil\'e2ndia",\
+    "periodo": "Noite",\
+    "tem_arma": 1,\
+    "vitima_ferida": 0,\
+    "historico_reincidencia": 1\
+\}])\
+\
+pipe.predict(nova)[0]\
+\
+\cf6 Pergunta ??\cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 Por que isso tende a dar 
+\f0\b Alta
+\f1\b0 ?\
+O que mudaria se \'93tem_arma=0\'94 e \'93vitima_ferida=0\'94?\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Parte 4 Mini-RAG de procedimentos \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 \strokec2 Objetivo:
+\f1\b0  mostrar que IA generativa precisa de 
+\f0\b fonte
+\f1\b0  (RAG) para n\'e3o \'93inventar\'94.\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 \strokec2 4.1 Criar uma base de conhecimento (did\'e1tica)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\i\b0\fs24 \cf0 \strokec2 (Fict\'edcia para ensino)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\i0 \cf3 \strokec2 Copiar c\'f3digo:\
+\cf5 kb = [\
+    \{\
+        "tema": "Preserva\'e7\'e3o de Local",\
+        "conteudo": "Em ocorr\'eancias com risco \'e0 vida ou crime grave, orientar a preserva\'e7\'e3o do local e acionar equipe competente. Evitar contamina\'e7\'e3o de vest\'edgios."\
+    \},\
+    \{\
+        "tema": "Viol\'eancia Dom\'e9stica",\
+        "conteudo": "Priorizar a seguran\'e7a da v\'edtima, avaliar risco imediato, orientar registro e medidas protetivas conforme protocolos vigentes."\
+    \},\
+    \{\
+        "tema": "Estelionato",\
+        "conteudo": "Coletar evid\'eancias digitais (comprovantes, prints, contas), orientar preserva\'e7\'e3o de registros e canais formais para bloqueio/contesta\'e7\'e3o quando aplic\'e1vel."\
+    \},\
+    \{\
+        "tema": "Amea\'e7a",\
+        "conteudo": "Registrar circunst\'e2ncias, identificar meio (presencial/mensagem), avaliar risco e orientar preserva\'e7\'e3o de evid\'eancias (mensagens, \'e1udios)."\
+    \}\
+]\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \strokec2 4.2 Recupera\'e7\'e3o (buscar o trecho relevante)\
+\
+\cf3 \strokec2 Copiar c\'f3digo:\
+\cf5 \
+def recuperar_contexto(pergunta, kb):\
+    p = pergunta.lower()\
+    hits = []\
+    for item in kb:\
+        if item["tema"].lower() in p:\
+            hits.append(item["conteudo"])\
+    if not hits:\
+        # fallback simples: pega 1 conte\'fado \'93mais geral\'94\
+        hits = [kb[0]["conteudo"]]\
+    return "\\n".join(hits)\
+\
+pergunta = "Como agir em um caso de Viol\'eancia Dom\'e9stica?"\
+contexto = recuperar_contexto(pergunta, kb)\
+contexto\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf4 Explica\'e7\'e3o\cf0 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls5\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Isso \'e9 o \'93R\'94 do RAG: 
+\f0\b Recupera\'e7\'e3o
+\f1\b0 .\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Voc\'ea est\'e1 selecionando trechos antes de \'93gerar\'94.\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 \strokec2 4.3 Gera\'e7\'e3o (simulada) prompt engineering\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf3 \strokec2 Copiar c\'f3digo:\
+\cf5 prompt = f"""\
+Voc\'ea \'e9 um assistente de triagem e orienta\'e7\'e3o.\
+Use APENAS o contexto abaixo para responder, sem inventar.\
+Se n\'e3o houver informa\'e7\'e3o, diga: "N\'e3o consta na base".\
+CONTEXTO:\
+\{contexto\}\
+\
+PERGUNTA:\
+\{pergunta\}\
+\
+RESPOSTA:\
+"""\
+print(prompt)\
+\
+\cf4 Explica\'e7\'e3o:\cf0 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls6\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 O modelo s\'f3 responde bem se o contexto for bom.\
+\ls6\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Isso reduz \'93alucina\'e7\'e3o\'94 e aumenta confiabilidade.\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Parte 5  Conectar ML + RAG em uma \'93triagem completa\'94 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs24 \cf0 \strokec2 Objetivo:
+\f1\b0  fechar com algo \'93produto\'94.\
+\cf3 \strokec2 Copiar c\'f3digo:\
+\cf5 def triagem_completa(ocorrencia_dict, pergunta_orientacao):\
+    # 1) prioridade via ML\
+    o = pd.DataFrame([ocorrencia_dict])\
+    prioridade = pipe.predict(o)[0]\
+    \
+    # 2) contexto via RAG simples\
+    contexto = recuperar_contexto(pergunta_orientacao, kb)\
+    \
+    return \{\
+        "prioridade_prevista": prioridade,\
+        "contexto_recuperado": contexto\
+    \}\
+\
+resultado = triagem_completa(\
+    \{\
+        "tipo": "Estelionato",\
+        "local": "Asa Sul",\
+        "periodo": "Manh\'e3",\
+        "tem_arma": 0,\
+        "vitima_ferida": 0,\
+        "historico_reincidencia": 0\
+    \},\
+    "Quais evid\'eancias coletar em Estelionato?"\
+)\
+\
+resultado\cf3 \
+\cf0 \strokec2 \
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf3 \strokec2 \
+\cf0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\
+\pard\tx720\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 \
+\
+}
