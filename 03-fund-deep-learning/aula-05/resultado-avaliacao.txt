@@ -1,0 +1,642 @@
+
+════════════════════════════════════════════════════════════
+                         RESULTADO DO EXERCÍCIO
+════════════════════════════════════════════════════════════
+
+    Prova: Avaliação final - Fundamentos de Deep Learning
+    Professor: Fabiano Miranda
+    
+────────────────────────────────────────────────────────────
+    
+    Aluno: Gustavo Aranha Araújo Costa dos Reis
+    Data: 03/02/2026, 19:08:26
+    
+════════════════════════════════════════════════════════════
+                           RESUMO DO DESEMPENHO
+════════════════════════════════════════════════════════════
+
+    NOTA FINAL: 65 de 100
+    
+    ✓ Acertos: 13
+    ◐ Parciais: 15
+    ✗ Erros: 2
+    ⏱ Tempo Total: 28min 4s
+    
+    Status: APROVADO
+
+════════════════════════════════════════════════════════════
+                      REVISÃO DAS QUESTÕES PARA ESTUDO
+════════════════════════════════════════════════════════════
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 1 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Qual é o principal objetivo da Inteligência Artificial?
+
+ALTERNATIVAS:
+    A) Substituir humanos
+    B) Automatizar tarefas repetitivas
+    C) Simular capacidades humanas como aprender e decidir
+    D) Apenas analisar dados
+
+SUA RESPOSTA:
+    C) Simular capacidades humanas como aprender e decidir
+
+RESPOSTA CORRETA:
+    C) Simular capacidades humanas como aprender e decidir
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 2 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é um modelo de Machine Learning?
+
+ALTERNATIVAS:
+    A) Um banco de dados
+    B) Um algoritmo treinado com dados
+    C) Um software de edição
+    D) Um hardware especializado
+
+SUA RESPOSTA:
+    B) Um algoritmo treinado com dados
+
+RESPOSTA CORRETA:
+    B) Um algoritmo treinado com dados
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 3 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Por que o problema do XOR foi importante na história das redes neurais?
+
+ALTERNATIVAS:
+    A) GPUs
+    B) Limitação de perceptrons lineares
+    C) Backprop
+    D) CNNs
+
+SUA RESPOSTA:
+    B) Limitação de perceptrons lineares
+
+RESPOSTA CORRETA:
+    B) Limitação de perceptrons lineares
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 4 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Ignorar a Veracidade no Big Data causa:
+
+ALTERNATIVAS:
+    A) Overfitting
+    B) Lentidão
+    C) Decisões erradas
+    D) Falta de volume
+
+SUA RESPOSTA:
+    C) Decisões erradas
+
+RESPOSTA CORRETA:
+    C) Decisões erradas
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 5 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Colapso de modo em GANs ocorre quando:
+
+ALTERNATIVAS:
+    A) D falha
+    B) G gera pouca diversidade
+    C) Dataset pequeno
+    D) Loss zero
+
+SUA RESPOSTA:
+    B) G gera pouca diversidade
+
+RESPOSTA CORRETA:
+    B) G gera pouca diversidade
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 6 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Processo reverso na difusão significa:
+
+ALTERNATIVAS:
+    A) Classificar
+    B) Remover ruído
+    C) Compactar
+    D) Normalizar
+
+SUA RESPOSTA:
+    B) Remover ruído
+
+RESPOSTA CORRETA:
+    B) Remover ruído
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 7 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Qual reduz alucinação em LLMs?
+
+ALTERNATIVAS:
+    A) Prompt longo
+    B) Fine-tuning
+    C) RAG
+    D) Quantização
+
+SUA RESPOSTA:
+    C) RAG
+
+RESPOSTA CORRETA:
+    C) RAG
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 8 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Índice invertido serve para:
+
+ALTERNATIVAS:
+    A) Armazenar imagens
+    B) Busca eficiente
+    C) Executar IA
+    D) Substituir embeddings
+
+SUA RESPOSTA:
+    B) Busca eficiente
+
+RESPOSTA CORRETA:
+    B) Busca eficiente
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 9 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Vantagem do Transformer:
+
+ALTERNATIVAS:
+    A) Menos dados
+    B) Atenção paralela
+    C) Sem treino
+    D) Sem tokens
+
+SUA RESPOSTA:
+    B) Atenção paralela
+
+RESPOSTA CORRETA:
+    B) Atenção paralela
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 10 - ✓ CORRETA (1/1 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Excesso de contexto causa:
+
+ALTERNATIVAS:
+    A) Economia
+    B) Precisão
+    C) Context stuffing
+    D) Atenção maior
+
+SUA RESPOSTA:
+    C) Context stuffing
+
+RESPOSTA CORRETA:
+    C) Context stuffing
+
+FEEDBACK DO PROFESSOR:
+    Parabéns! Você selecionou a alternativa correta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 11 - ✗ INCORRETA (0/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique por que modelos de difusão são mais estáveis que GANs.
+
+SUA RESPOSTA:
+    pois o modelo de difusão realiza um processo de refinamento gradual.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno é muito vaga e não aborda os pontos principais esperados sobre o modelo de difusão. Além disso, a falta de explicação e exemplos específicos compromete a clareza e a precisão conceitual da resposta, tornando-a insatisfatória.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 12 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Descreva como a Engenharia de Contexto muda sistemas corporativos.
+
+SUA RESPOSTA:
+    Em vez de treinar um modelo caro do zero, o foco é organizar o dado correto no momento correto. Em sistemas corporativos, os dados mudam diariamente. A engenharia de contexto permite manter os dados atualizados.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta toca em alguns pontos relevantes sobre a importância da atualização dos dados em sistemas corporativos, mas falta maior clareza e uma explicação mais robusta sobre a engenharia de contexto. A questão não é totalmente abordada, o que a torna incompleta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 13 - ✓ CORRETA (2/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique a maldição da dimensionalidade em imagens.
+
+SUA RESPOSTA:
+    A maldição da dimensionalidade em imagens refere-se ao fato de que, como cada pixel (multiplicado pelos canais de cor) atua como uma dimensão matemática independente, o espaço de busca torna-se vasto e esparso de forma exponencial, fazendo com que qualquer conjunto de dados pareça insuficiente para preencher o "vazio" estatístico. Isso resulta em problemas onde a distância entre imagens perde o sentido semântico — já que quase todos os pontos parecem estar à mesma distância em espaços de altíssima dimensão — e exige um poder computacional imenso para processar combinações irrelevantes de pixels
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta aborda de forma completa a maldição da dimensionalidade, explicando como o número de pixels e canais de cor afeta o espaço de busca. A clareza e a precisão das informações apresentadas são excelentes, demonstrando um bom entendimento do conceito.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 14 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Compare GANs e modelos de difusão.
+
+SUA RESPOSTA:
+    GANs são rápidas, mas instáveis e sofrem colapso. Difusão é lenta, porém estável e gera maior diversidade ao refinar ruído sob uma base matemática sólida.
+
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta menciona características importantes das GANs e dos modelos de difusão, mas falta maior detalhamento e explicação dos conceitos. A clareza poderia ser melhorada ao organizar as ideias de forma mais fluida e coerente.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 15 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique como RAG reduz alucinações.
+
+SUA RESPOSTA:
+    reduz alucinações ao substituir o "palpite" do modelo por evidências. Em vez de o LLM confiar apenas na memória interna (treinamento), o sistema busca documentos reais em uma base de dados e os entrega como contexto.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno aborda a substituição de 'palpites' por evidências, o que é um ponto positivo. No entanto, falta clareza na descrição do processo e uma explicação mais detalhada sobre como esse sistema impacta a redução de alucinações. A precisão conceitual poderia ser melhorada com exemplos ou uma abordagem mais estruturada.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 16 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Descreva um pipeline completo de IA.
+
+SUA RESPOSTA:
+    Limpeza, Embedding, Armazenamento, Retrieval, Geração, Monitoramento
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta apresenta uma lista de termos relevantes, mas falta explicação e contexto sobre como esses conceitos se relacionam entre si. Além disso, não há evidência de clareza ou profundidade na apresentação dos tópicos.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 17 - ◐ PARCIALMENTE CORRETA (1.5/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Analise riscos éticos da IA generativa.
+
+SUA RESPOSTA:
+    Podem ocorrer: discriminação (dados históricos da internet com viés discriminatório); deepfakes (criação de conteúdo artificial mal intencionado); opacidade (falta de informação em se saber como tal resultado foi alcançado); Impacto ambiental (alto processamento gera consumo excessivo de energia)
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta aborda alguns pontos relevantes sobre os riscos associados à tecnologia, como discriminação e deepfakes. No entanto, a organização poderia ser melhorada para fornecer uma explicação mais clara e completa sobre cada risco. A precisão conceitual está presente, mas a falta de detalhes em cada item mencionando como esses problemas se manifestam diminui a clareza geral.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 18 - ✓ CORRETA (2/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique o papel da UNet.
+
+SUA RESPOSTA:
+    A U-Net atua como o motor de estimativa de ruído dentro dos modelos de difusão, utilizando uma arquitetura simétrica que primeiro comprime a imagem para captar seu significado semântico e depois a reconstrói para recuperar detalhes espaciais. Seu papel crucial é prever, a cada passo do processo, qual padrão de pixel corresponde ao ruído aleatório para subtraí-lo, utilizando skip connections (conexões de salto) para preservar a precisão estrutural e garantir que a imagem final seja nítida e coerente com o prompt original, conforme descrito nas bases da arquitetura U-Net.
+
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno é clara e aborda todos os pontos principais relacionados ao papel da U-Net nos modelos de difusão. A descrição da arquitetura simétrica e das skip connections foi bem elaborada, demonstrando precisão conceitual e organização na apresentação das ideias.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 19 - ✓ CORRETA (2/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique o conceito de overfitting.
+
+SUA RESPOSTA:
+    O overfitting (sobreajuste) ocorre quando um modelo de IA "decora" os dados de treino em vez de aprender os padrões gerais, tornando-se um especialista em ruídos e detalhes irrelevantes daquela amostra específica.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno aborda claramente o conceito de overfitting, explicando como ele se relaciona com o aprendizado dos modelos de IA. A definição é precisa e demonstra um bom entendimento do tema. Além disso, a organização das ideias contribui para a clareza da explicação.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 20 - ◐ PARCIALMENTE CORRETA (1.5/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Descreva os 5Vs do Big Data.
+
+SUA RESPOSTA:
+    volume (quantidade de dados); velocidade (frequencia de dados novos gerados); variedade (diferentes tipos de dados); veracidade (confiabilidade dos dados); valor (benefícios reais)
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno aborda os cinco V's do Big Data de forma concisa, mostrando uma boa compreensão do tema. No entanto, poderia ser mais clara e organizada, incluindo explicações sobre cada ponto para melhor compreensão e precisão conceitual.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 21 - ✗ INCORRETA (0/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é CRISP-DM?
+
+SUA RESPOSTA:
+    é uma metodologia de guia de projetos de mineração de dados
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta é vaga e não aborda os principais pontos esperados sobre a metodologia de mineração de dados. A falta de clareza e de conceitos relevantes torna a resposta inadequada e não demonstra o conhecimento sobre o tema.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 22 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique o papel do discriminador em uma GAN.
+
+SUA RESPOSTA:
+    É a atuação em determinar se os dados são reais ou falsos
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno toca no tema central da verificação de dados, mas carece de clareza e profundidade. Falta uma explicação mais completa sobre o processo de determinar a veracidade dos dados e como isso é aplicado na prática.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 23 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique embeddings.
+
+SUA RESPOSTA:
+    são representações matemáticas que convertem dados complexos em vetores numéricos
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta apresentada demonstra uma compreensão básica do conceito de representações matemáticas e sua conversão de dados em vetores. No entanto, falta clareza e detalhes adicionais que poderiam enriquecer a explicação, como exemplos ou contextos de aplicação.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 24 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+Explique checkpoints em IA.
+
+SUA RESPOSTA:
+    são fotos do estados de um modelo de IA capturadas durante o treinamento
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta aborda um aspecto do treinamento de IA, mencionando fotos dos estados do modelo. No entanto, falta clareza e detalhes sobre a importância dessas fotos e como elas se relacionam com o treinamento. A precisão conceitual poderia ser aprimorada.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 25 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é Inteligência Artificial?
+
+SUA RESPOSTA:
+    é o campo da ciência da computação que busca criar sistemas capazes de realizar tarefas que normalmente exigiriam inteligência humana, como raciocínio, aprendizado, percepção visual e tomada de decisão.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta aborda de forma geral o conceito de inteligência artificial, mencionando algumas das suas capacidades. No entanto, falta maior profundidade e exemplos que poderiam enriquecer a explicação, resultando em uma resposta que parece um pouco superficial.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 26 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que são dados estruturados?
+
+SUA RESPOSTA:
+    são dados objetivos e de simples percepção, tais como tabelas, organizados em formato rígido e predefinido
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno aborda parcialmente o tema, mencionando que os dados são objetivos e organizados em formato rígido. No entanto, falta uma explicação mais completa sobre o que constitui dados em um contexto mais amplo e como eles são utilizados. A clareza está presente, mas a falta de profundidade limita a precisão conceitual.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 27 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é Deep Learning?
+
+SUA RESPOSTA:
+    é uma subárea do machine learning baseada em redes neurais com várias camadas de processamento. simulando simplificadamente o funcionamento do cérebro humano.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno aborda a definição básica de redes neurais, mencionando sua relação com o funcionamento do cérebro humano. No entanto, falta profundidade e detalhes sobre como as múltiplas camadas de processamento funcionam e suas aplicações no contexto do machine learning, o que compromete a completude da resposta.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 28 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é Machine Learning?
+
+SUA RESPOSTA:
+    é a área da IA que tem como objetivo dar aos computadores a capacidade de aprender sem serem treinadas. Aprender por conta própria.
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta do aluno menciona o conceito de aprender sem serem treinados, o que é pertinente. No entanto, falta aprofundamento e definição mais clara do tema, além de não mencionar o termo 'aprendizado de máquina' ou 'aprendizado não supervisionado', que são relevantes para a discussão.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 29 - ◐ PARCIALMENTE CORRETA (1/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é um modelo generativo?
+
+SUA RESPOSTA:
+    é uma inteligência artificial capaz de gerar conteúdo, tais como audio, imagens textos
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta menciona que a inteligência artificial pode gerar diversos tipos de conteúdo, o que é um ponto positivo. No entanto, falta clareza, organização e detalhes sobre como funciona esse processo. A precisão conceitual também é insuficiente, pois não é explícito o que é uma inteligência artificial.
+
+
+────────────────────────────────────────────────────────────
+QUESTÃO 30 - ◐ PARCIALMENTE CORRETA (1.5/2 pts)
+
+────────────────────────────────────────────────────────────
+
+PERGUNTA:
+O que é RAG?
+
+SUA RESPOSTA:
+    é uma técnica que combina a capacidade de escrita dos LLMs com a precisão de fontes de dados externas. Em vez de confiar apenas no conhecimento "congelado" do treino, o sistema recupera (retrieval) documentos relevantes em tempo real e os entrega ao modelo para que ele gere uma resposta ancorada em fatos
+
+RESPOSTA CORRETA:
+    Ver rubrica de avaliação
+
+FEEDBACK DO PROFESSOR:
+    A resposta aborda de forma adequada a técnica mencionada, destacando a combinação de LLMs com fontes externas. No entanto, poderia ser mais clara e estruturada, incluindo exemplos ou explicações adicionais sobre o impacto dessa técnica.
+
+
+════════════════════════════════════════════════════════════
+                              FIM DO RELATÓRIO
+════════════════════════════════════════════════════════════
+
+    Use este documento para revisar as questões que errou.
+    Bons estudos!
+
+    SouLab.AI - Plataforma de Avaliação Inteligente
+    Prof. Fabiano Miranda
