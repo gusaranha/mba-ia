@@ -18,8 +18,10 @@ collection = chroma_client.get_collection(name="inqueritos_pcdf", embedding_func
 # 2. Conexão com o Cérebro (Llama)
 client = OpenAI(base_url='http://localhost:11434/v1', api_key='ollama')
 
+
 class Pergunta(BaseModel):
     texto: str
+
 
 @app.post("/investigar")
 def investigar_caso(pergunta: Pergunta):
@@ -29,7 +31,7 @@ def investigar_caso(pergunta: Pergunta):
     # Buscamos no banco os 3 trechos mais parecidos com a pergunta
     resultados = collection.query(
         query_texts=[pergunta.texto],
-        n_results=3 # Traz os top 3 pedaços mais relevantes
+        n_results=3  # Traz os top 3 pedaços mais relevantes
     )
 
     # Juntamos os pedaços recuperados em um único texto
