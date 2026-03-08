@@ -5,26 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00c16769-2e16-4cfd-9c48-471fa40a775b" name="Changes" comment="Config">
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/.python-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/cifar.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/cifar_finetune.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/Conv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/Conv2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/Filtro.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/ImageRGB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/MLP1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/MLP2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/MLP3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/MaxPooling.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/deeplearning/images/VGG.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/face_app_fastapi/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/face_app_fastapi/recfacial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/face_app_fastapi/vllm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/face_app_gradio/client_gradio.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/models/shape_predictor_68_face_landmarks.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-02/uv.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/aula-01.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/.python-version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/fundamentos_visao_computacional.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/fundamentos_visao_computacional.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/vlm_exemplo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/vlm_exemplo.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/fastapi/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/fastapi/gradio_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/fastapi/gradio_01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/models/baixar-modelo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/pyproject.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/uv.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,26 +29,27 @@
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_/Users/gustavoaranha/PycharmProjects/mba-ia" value="3AUUHkUQo3WJa9hdgeeq0U3nbSZ" />
+      <entry key="_C:/Users/gusta/IdeaProjects/mba-ia" value="3AfO68cqmw7YdAbA9Y2Awqqu93P" />
     </persistenceIdMap>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "gusaranha"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;gusaranha&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/gusaranha/mba-ia.git",
-    "accountId": "fa3b6820-4827-4d6b-bde5-0f70cf1c2045"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gusaranha/mba-ia.git&quot;,
+    &quot;accountId&quot;: &quot;fa3b6820-4827-4d6b-bde5-0f70cf1c2045&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3AUUHkUQo3WJa9hdgeeq0U3nbSZ" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -70,8 +66,9 @@
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/gustavoaranha/PycharmProjects/mba-ia/05-visao-computacional/aula-02",
+    "last_opened_file_path": "C:/Users/gusta/IdeaProjects/mba-ia/05-visao-computacional",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,6 +81,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gusta\IdeaProjects\mba-ia\05-visao-computacional" />
       <recent name="$PROJECT_DIR$/05-visao-computacional/aula-02" />
       <recent name="$PROJECT_DIR$/05-visao-computacional/aula-02/fotos" />
       <recent name="$PROJECT_DIR$/05-visao-computacional" />
@@ -124,8 +122,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.29346.142" />
-        <option value="bundled-python-sdk-f2b7a9f6281b-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.30387.173" />
+        <option value="bundled-python-sdk-4762d8aabb82-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.30387.173" />
       </set>
     </attachedChunks>
   </component>
@@ -137,6 +135,7 @@
       <option name="presentableId" value="Default" />
       <updated>1772646557162</updated>
       <workItem from="1772646558360" duration="12465000" />
+      <workItem from="1772979980596" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary="Projeto final">
       <option name="closed" value="true" />
