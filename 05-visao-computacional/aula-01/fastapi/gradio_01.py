@@ -75,14 +75,14 @@ with gr.Blocks(title="Cliente FastAPI", theme=gr.themes.Soft()) as demo:
         ## Como usar:
         
         1. **Inicie o servidor FastAPI primeiro:**
-            ```bash
-            uvicorn seu_script:app --reload
-            ```
+```bash
+           uvicorn seu_script:app --reload
+```
         
         2. **Execute esta interface Gradio:**
-            ```bash
-            python cliente_gradio.py
-            ```
+```bash
+           python cliente_gradio.py
+```
         
         3. **Use as abas acima para testar os endpoints**
         
