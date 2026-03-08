@@ -20,7 +20,7 @@ import dlib
 from vllm import VLLM
 from recfacial import RecFacial
 
-obj_vllm = VLLM('192.168.15.60', vllm_model='cpatonn/Qwen3-Omni-30B-A3B-Instruct-AWQ-4bit', api_key='EMPTY')
+obj_vllm = VLLM('localhost:11434', vllm_model='cpatonn/Qwen3-Omni-30B-A3B-Instruct-AWQ-4bit', api_key='EMPTY')
 dlib_face_detector = dlib.get_frontal_face_detector()
 dlib_face_predictor = dlib.shape_predictor("../models/shape_predictor_68_face_landmarks.dat")
 obj_rec_facial = RecFacial(dlib_face_detector, dlib_face_predictor, obj_vllm)

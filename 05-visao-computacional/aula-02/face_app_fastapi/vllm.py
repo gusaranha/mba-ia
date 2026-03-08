@@ -13,11 +13,11 @@ class VLLM:
         model = None
         if self.models and vllm_model not in self.models: 
             print(f"Modelo {vllm_model} nao encontrado em {vllm_host}.")
-            print(f"<< servidor VLLM usando {model} >>")
             model = self.models[0]
+            print(f"<< servidor VLLM usando: {model} >>")
             self.vllm_model = model
         else:
-            print(f"<< servidor VLLM usando {vllm_model} >>")
+            print(f"<< servidor VLLM usando: {vllm_model} >>")
             self.vllm_model = vllm_model
 
 
@@ -28,6 +28,7 @@ class VLLM:
             else:
                 api_key = "EMPTY"
                 
+        print(f"Conectando ao servidor VLLM em {host} com api_key='{api_key}'...")
         cliente_openai = OpenAI(
             base_url=f"http://{host}/v1",
             api_key=api_key,

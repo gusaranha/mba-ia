@@ -70,18 +70,18 @@ class RecFacial:
         img_b64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
         if not prompt:
             prompt = """Atue como um sistema especialista em análise demográfica e reconhecimento facial. 
-    Sua tarefa é analisar a imagem fornecida e extrair a idade e o sexo da pessoa.
+                Sua tarefa é analisar a imagem fornecida e extrair a idade e o sexo da pessoa.
 
-    INSTRUÇÕES CRÍTICAS:
-    1. Se a pessoa for anônima, e isso é mais provável, forneça uma estimativa numérica baseada em traços visuais.
-    2. Se tiver certeza de que a pessoa é uma figura pública, mencione o nome dela nas observações.
-    3. A saída deve ser estritamente um objeto JSON único, sem textos introdutórios ou conclusões.
-    4. As observações devem ser sucintas, com no máximo 25 palavras.
+                INSTRUÇÕES CRÍTICAS:
+                1. Se a pessoa for anônima, e isso é mais provável, forneça uma estimativa numérica baseada em traços visuais.
+                2. Se tiver certeza de que a pessoa é uma figura pública, mencione o nome dela nas observações.
+                3. A saída deve ser estritamente um objeto JSON único, sem textos introdutórios ou conclusões.
+                4. As observações devem ser sucintas, com no máximo 25 palavras.
 
-    FORMATO DE RESPOSTA (EXEMPLO):
-    {"idade": 18, "sexo": "Feminino", "observacoes": "Aparentemente trata-se da atriz inglesa Abigail Zoe Lewis."}
+                FORMATO DE RESPOSTA (EXEMPLO):
+                {"idade": 18, "sexo": "Feminino", "observacoes": "Aparentemente trata-se da atriz inglesa Abigail Zoe Lewis."}
 
-    PERGUNTA: Qual a idade e sexo da pessoa nessa foto, considerando que estamos em fevereiro de 2026?"""
+                PERGUNTA: Qual a idade e sexo da pessoa nessa foto, considerando que estamos em fevereiro de 2026?"""
 
         resp = self.vllm.get_resposta(img_b64, prompt)
         match = re.search(r'(\{.*\})', resp, re.DOTALL)
