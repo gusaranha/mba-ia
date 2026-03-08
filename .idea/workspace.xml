@@ -4,27 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00c16769-2e16-4cfd-9c48-471fa40a775b" name="Changes" comment="Config">
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/aula-01.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+    <list default="true" id="00c16769-2e16-4cfd-9c48-471fa40a775b" name="Changes" comment=".idea config">
+      <change afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/.python-version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/dlib.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/dlib.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/fundamentos_visao_computacional.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/fundamentos_visao_computacional.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/vlm_exemplo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/vlm_exemplo.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/fastapi/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/fastapi/gradio_01.py" beforeDir="false" afterPath="$PROJECT_DIR$/05-visao-computacional/aula-01/fastapi/gradio_01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/models/baixar-modelo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/pyproject.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/uv.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-visao-computacional/aula-01/dl_viscomp/readme.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
@@ -74,7 +70,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.completions.CompletionsConfigurable",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -135,7 +131,7 @@
       <option name="presentableId" value="Default" />
       <updated>1772646557162</updated>
       <workItem from="1772646558360" duration="12465000" />
-      <workItem from="1772979980596" duration="403000" />
+      <workItem from="1772979980596" duration="3134000" />
     </task>
     <task id="LOCAL-00001" summary="Projeto final">
       <option name="closed" value="true" />
@@ -161,7 +157,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772733276149</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Disciplina visão computacional - Aula 01 (fixed)">
+      <option name="closed" value="true" />
+      <created>1772980743269</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772980743269</updated>
+    </task>
+    <task id="LOCAL-00005" summary=".idea config">
+      <option name="closed" value="true" />
+      <created>1772980755417</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772980755417</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +193,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Projeto final" />
     <MESSAGE value="Config" />
-    <option name="LAST_COMMIT_MESSAGE" value="Config" />
+    <MESSAGE value="Disciplina visão computacional - Aula 01 (fixed)" />
+    <MESSAGE value=".idea config" />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea config" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mba_ia$main.coverage" NAME="main Coverage Results" MODIFIED="1772738281850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/05-visao-computacional/aula-02/face_app_fastapi" />
