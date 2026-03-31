@@ -11,6 +11,7 @@ uv pip install opencv-python opencv-contrib-python
 uv pip install openai
 uv pip install ultralytics insightface onnxruntime-gpu -q
 uv pip install transformers 
+python -m ensurepip --upgrade
 ```
 
 ### Instalar/rodar Ollama:
