@@ -1,0 +1,8 @@
+path: C:\Users\gusta\IdeaProjects\mba-ia\05-visao-computacional\trabalho-final\dataset
+train: train\images
+val: val\images
+test: test\images
+
+names:
+  0: Pistola
+  1: Fuzil
