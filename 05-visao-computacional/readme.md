@@ -20,3 +20,10 @@ docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 docker exec -it ollama ollama run llama2
 docker exec -it ollama ollama pull <model_name>
 ```
+
+### Contatos
+joaomacedo@gmail.com
+
+
+
+
