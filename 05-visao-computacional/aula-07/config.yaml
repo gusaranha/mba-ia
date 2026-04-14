@@ -1,0 +1,8 @@
+path: /Users/joaomacedo/LocalDev/datasets/flix_face/ # caminho absoluto
+train: train/images                                  # relativo
+val: val/images                                      # relativo
+
+# classes
+names:
+  0: cabeca
+  1: mao
