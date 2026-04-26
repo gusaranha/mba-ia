@@ -17,8 +17,15 @@ def print_metricas(model: YOLO, particao):
     print(60 * '-')
     for i, cls_idx in enumerate(metricas.box.ap_class_index):
         nome = model.names[cls_idx]
-        ap = metricas.box.ap50[i]
-        print(f'  {int(cls_idx)} {nome:<15} AP@50 = {ap:.4f}')
+        ap50 = metricas.box.ap50[i]
+        ap = metricas.box.ap[i]
+        p = metricas.box.p[i]
+        r = metricas.box.r[i]
+
+        print(f'  {int(cls_idx)} {nome:<15} AP@50 = {ap50:.4f}')
+        print(f'  {int(cls_idx)} {nome:<15} AP@50:95 = {ap:.4f}')
+        print(f'  {int(cls_idx)} {nome:<15} Precision = {p:.4f}')
+        print(f'  {int(cls_idx)} {nome:<15} Recall = {r:.4f}')
 
 
 if __name__ == '__main__':
