@@ -1,6 +1,5 @@
 {
-  "python.venvPath": ".",
-  "python.venvFolders": [".venv"],
-  "python.defaultInterpreterPath": "./.venv/bin/python",
-  "python-envs.defaultEnvManager": "ms-python.python:system"
+  "python.defaultInterpreterPath": "${env:HOME}/PycharmProjects/mba-ia/07-rag-cag/venv_rag/bin/python",
+  "jupyter.kernelSpecProvider.provider": "localKernelProvider",
+  "jupyter.notebookFileRoot": "${workspaceFolder}"
 }
