@@ -40,7 +40,7 @@ Conforme a ementa, três entregáveis formam a avaliação desta aula:
 ```python
 # O professor executa este bloco no notebook do aluno (datasets oficiais)
 from pathlib import Path
-DATASET = Path("aula-02/datasets")
+DATASET = Path("aula2/datasets")
 
 # Caso 1 — PDF digital (sem OCR)
 result = converter.convert(str(DATASET / "Manual_DPCA_atualizado.pdf"))
