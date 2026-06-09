@@ -34,6 +34,7 @@ def apagar_indice(url, indice, auth):
         r = requests.delete(f"{url}/{indice}", auth=auth, timeout=10)
         if r.status_code in (200, 404):
             print(f"Indice '{indice}' apagado (ou ja nao existia).")
+
     except Exception as e:
         print(f"Aviso: nao consegui apagar o indice: {e}")
 
@@ -77,7 +78,7 @@ def main():
     ]
 
     print(f"\nGerando embeddings de {len(documentos)} documentos via Ollama (pode demorar)...")
-    embedder = OllamaDocumentEmbedder(model=modelo, url=base_url)
+    embedder = OllamaDocumentEmbedder(model=modelo, url=base_url, batch_size=4, timeout=3000)
     docs_com_vetor = embedder.run(documents=documentos)["documents"]
 
     print("Gravando no OpenSearch (texto p/ BM25 + vetor p/ kNN)...")
