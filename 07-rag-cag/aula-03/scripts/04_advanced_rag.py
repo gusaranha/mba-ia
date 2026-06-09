@@ -71,7 +71,7 @@ def montar_pipeline(indice, top_n, rerank_k, usar_langfuse):
     if usar_langfuse:
         from haystack_integrations.components.connectors.langfuse import LangfuseConnector
 
-        pipe.add_component("tracer", LangfuseConnector("advanced-rag-aula3"))
+        pipe.add_component("tracer", LangfuseConnector("advanced-rag-aula-03"))
 
     pipe.add_component("embedder", OllamaTextEmbedder(model=modelo_embed, url=base_url))
     pipe.add_component("retriever", OpenSearchEmbeddingRetriever(document_store=store, top_k=top_n))

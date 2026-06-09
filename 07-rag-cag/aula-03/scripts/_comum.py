@@ -20,8 +20,8 @@ from dotenv import load_dotenv
 # ---------------------------------------------------------------------------
 # Caminhos importantes
 # ---------------------------------------------------------------------------
-PASTA_SCRIPTS = Path(__file__).resolve().parent           # .../aula3/scripts
-PASTA_AULA3 = PASTA_SCRIPTS.parent                        # .../aula3
+PASTA_SCRIPTS = Path(__file__).resolve().parent           # .../aula-03/scripts
+PASTA_AULA3 = PASTA_SCRIPTS.parent                        # .../aula-03
 PASTA_PROJETO = PASTA_AULA3.parent                        # .../MBA_RAG_CAG
 CORPUS = PASTA_AULA3 / "datasets" / "corpus_juridico_aula3.json"
 

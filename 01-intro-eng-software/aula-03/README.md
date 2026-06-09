@@ -14,7 +14,7 @@ Material de código completo da Aula 3 do curso.
 
 ```bash
 # Clone ou baixe o repositório
-cd aula3-codigos
+cd aula-03-codigos
 
 # Criar ambiente virtual
 python -m venv venv
