@@ -22,3 +22,5 @@ matplotlib>=3.8
 
 # --- Configuracao via .env ---
 python-dotenv>=1.0
+
+# uv pip install haystack-ai opensearch-haystack ollama-haystack openai nltk scikit-learn numpy requests umap-learn matplotlib python-dotenv

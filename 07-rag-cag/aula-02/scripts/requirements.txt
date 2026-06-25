@@ -23,3 +23,5 @@ langchain-core>=0.3
 # --- Configuracao via .env ---
 python-dotenv>=1.0
 requests>=2.31
+
+# uv pip install haystack-ai opensearch-haystack ollama-haystack openai docling PyPDF2 langchain-text-splitters langchain-experimental langchain-ollama langchain-core python-dotenv requests

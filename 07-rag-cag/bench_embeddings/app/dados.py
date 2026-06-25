@@ -17,7 +17,7 @@ from pathlib import Path
 PASTA_APP = Path(__file__).resolve().parent
 PASTA_BENCH = PASTA_APP.parent
 PASTA_PROJETO = PASTA_BENCH.parent
-DATASET_PADRAO = PASTA_PROJETO / "aula11" / "datasets" / "corpus_juridico_benchmark.json"
+DATASET_PADRAO = PASTA_PROJETO / "bench_embeddings" / "datasets" / "corpus_juridico_benchmark.json"
 
 
 def _normalizar(d):
