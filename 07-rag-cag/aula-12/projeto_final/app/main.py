@@ -15,6 +15,7 @@ Rodar:  uvicorn app.main:app --reload    (de dentro de projeto_final/)
 """
 
 import time
+import asyncio
 
 from fastapi import FastAPI, File, Header, HTTPException, UploadFile
 
@@ -56,8 +57,14 @@ async def ingestao(arquivo: UploadFile = File(...), estrategia: str = "auto",
         # 1) AGENTE decide a tecnica e extrai
         sinais, tecnica, complexidade, motivo, dados = extracao.decidir_e_extrair(str(destino))
         # 2) HEURISTICA decide destino + (no OpenSearch) a melhor tecnica de chunking, e indexa
-        estr = indexacao.indexar(dados, meta={"arquivo": arquivo.filename},
-                                 destino_override=estrategia, chunking_override=chunking)
+        estr = await asyncio.to_thread(
+            indexacao.indexar,
+            dados,
+            {"arquivo": arquivo.filename},
+            estrategia,
+            chunking
+        )
+                                 
         extracao.limpar_cache(str(destino))
         METRICAS["ingestoes"] += 1
         log.info("== /ingestao OK: arquivo=%s, destino=%s, chunking=%s, chunks=%d (%.1fs) ==",
