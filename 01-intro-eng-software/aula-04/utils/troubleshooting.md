@@ -152,7 +152,7 @@ pip install python-json-logger==2.0.7
 
 1. **Use outra porta:**
 ```bash
-uvicorn main:app --reload --port 8001
+uvicorn main:app --reload --port 8000
 ```
 
 2. **Mate o processo anterior:**
@@ -202,7 +202,7 @@ uvicorn app:app --reload
 **Solução rápida:**
 ```bash
 # Reinicie com outra porta
-uvicorn main:app --reload --port 8001
+uvicorn main:app --reload --port 8000
 ```
 
 ---
@@ -428,8 +428,8 @@ git config --global http.proxy http://proxy.example.com:8080
 2. **Porta correta?**
 ```bash
 # Se rodou em outra porta:
-uvicorn main:app --reload --port 8001
-# Acesse: http://localhost:8001
+uvicorn main:app --reload --port 8000
+# Acesse: http://localhost:8000
 ```
 
 3. **Firewall bloqueando?**

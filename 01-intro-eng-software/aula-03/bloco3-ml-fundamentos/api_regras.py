@@ -110,5 +110,5 @@ def analisar(transacao: Transacao):
     }
 
 # EXECUTAR:
-# uvicorn api_regras:app --reload --port 8001
-# Docs: http://localhost:8001/docs
+# uvicorn api_regras:app --reload --port 8000
+# Docs: http://localhost:8000/docs

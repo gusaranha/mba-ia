@@ -268,7 +268,7 @@ pip install --user -r requirements.txt
 ### Porta 8000 já está em uso
 ```bash
 # Use outra porta
-uvicorn main:app --reload --port 8001
+uvicorn main:app --reload --port 8000
 ```
 
 ### Import error no pytest
