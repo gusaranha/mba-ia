@@ -1,0 +1,1111 @@
+Ex.00 Chatbot 
+
+# Chat de decisão para triagem de boletins de ocorrência
+
+def limpar_tela():
+    print("\n" + "=" * 55)
+
+def exibir_cabecalho():
+    print("=" * 55)
+    print("     SISTEMA DE TRIAGEM DE BOLETIM DE OCORRÊNCIA")
+    print("          Polícia Civil — Atendimento Digital")
+    print("=" * 55)
+
+def perguntar(texto, opcoes=None):
+    """Exibe uma pergunta e retorna a resposta do usuário."""
+    print(f"\n{texto}")
+    if opcoes:
+        for i, op in enumerate(opcoes, 1):
+            print(f"  [{i}] {op}")
+        while True:
+            resposta = input("\n>>> Digite o número da opção: ").strip()
+            if resposta.isdigit() and 1 <= int(resposta) <= len(opcoes):
+                return int(resposta)
+            print("    Opção inválida. Tente novamente.")
+    else:
+        return input("\n>>> ").strip()
+
+def resultado(tipo, urgencia, artigo, orientacao, cor=""):
+    """Exibe o resultado final da triagem."""
+    limpar_tela()
+    print("\n  RESULTADO DA TRIAGEM")
+    print("-" * 55)
+    print(f"  Tipo de ocorrência : {tipo}")
+    print(f"  Urgência           : {urgencia}")
+    print(f"  Artigo do CP       : {artigo}")
+    print("-" * 55)
+    print(f"\n  ORIENTAÇÃO AO POLICIAL:")
+    print(f"  {orientacao}")
+    print("\n" + "=" * 55)
+    print("  Atendimento encerrado. Registre o protocolo.")
+    print("=" * 55 + "\n")
+
+def fluxo_patrimonio():
+    """Sub-fluxo para crimes contra o patrimônio."""
+    houve_violencia = perguntar(
+        "Houve uso de violência ou grave ameaça durante o crime?",
+        ["Sim", "Não"]
+    )
+
+    if houve_violencia == 1:
+        # Com violência → Roubo
+        vitima_ferida = perguntar(
+            "A vítima sofreu lesões físicas?",
+            ["Sim, lesões graves (hospitalização)", "Sim, lesões leves", "Não"]
+        )
+
+        if vitima_ferida == 1:
+            resultado(
+                tipo="LATROCÍNIO (tentativa) ou ROUBO MAJORADO",
+                urgencia="🔴 URGÊNCIA ALTA — Ação imediata",
+                artigo="Art. 157 §3º CP",
+                orientacao="Acionar SAMU imediatamente. Preservar cena. "
+                           "Isolar área e acionar delegacia especializada."
+            )
+        elif vitima_ferida == 2:
+            resultado(
+                tipo="ROUBO COM LESÃO CORPORAL",
+                urgencia="🟠 URGÊNCIA MÉDIA-ALTA",
+                artigo="Art. 157 §§1º e 2º CP",
+                orientacao="Verificar se vítima precisa de atendimento médico. "
+                           "Coletar descrição do suspeito e registro das lesões."
+            )
+        else:
+            resultado(
+                tipo="ROUBO SIMPLES",
+                urgencia="🟠 URGÊNCIA MÉDIA",
+                artigo="Art. 157 caput CP",
+                orientacao="Colher descrição detalhada do suspeito e do bem subtraído. "
+                           "Verificar câmeras na região. Registrar BO."
+            )
+
+    else:
+        # Sem violência → Furto
+        bem_subtraido = perguntar(
+            "O que foi subtraído?",
+            ["Veículo", "Residência/estabelecimento arrombado", "Celular/carteira/objetos pessoais", "Outros"]
+        )
+
+        if bem_subtraido == 1:
+            resultado(
+                tipo="FURTO DE VEÍCULO",
+                urgencia="🟠 URGÊNCIA MÉDIA",
+                artigo="Art. 155 §5º CP",
+                orientacao="Registrar placa, modelo e cor do veículo. "
+                           "Acionar sistema de alerta para veículos furtados (INFOSEG). "
+                           "Verificar câmeras de trânsito na área."
+            )
+        elif bem_subtraido == 2:
+            resultado(
+                tipo="FURTO QUALIFICADO (arrombamento)",
+                urgencia="🟠 URGÊNCIA MÉDIA",
+                artigo="Art. 155 §4º I e II CP",
+                orientacao="Preservar cena para perícia. Não tocar na área de entrada. "
+                           "Acionar perito para coleta de impressões digitais."
+            )
+        elif bem_subtraido == 3:
+            resultado(
+                tipo="FURTO SIMPLES",
+                urgencia="🟡 URGÊNCIA BAIXA",
+                artigo="Art. 155 caput CP",
+                orientacao="Colher descrição de possíveis suspeitos e testemunhas. "
+                           "Verificar câmeras de segurança do local. Registrar BO."
+            )
+        else:
+            resultado(
+                tipo="FURTO SIMPLES",
+                urgencia="🟡 URGÊNCIA BAIXA",
+                artigo="Art. 155 caput CP",
+                orientacao="Registrar os bens subtraídos com valor estimado. "
+                           "Colher dados de testemunhas se houver. Registrar BO."
+            )
+
+def fluxo_violencia_pessoa():
+    """Sub-fluxo para crimes contra a pessoa."""
+    tipo_violencia = perguntar(
+        "Qual o tipo de situação?",
+        ["Violência doméstica (Lei Maria da Penha)", "Briga/agressão entre desconhecidos",
+         "Ameaça (sem agressão física)", "Homicídio ou tentativa de homicídio"]
+    )
+
+    if tipo_violencia == 1:
+        vitima_segura = perguntar(
+            "A vítima está em local seguro agora?",
+            ["Sim, está em segurança", "Não, o agressor ainda está presente"]
+        )
+
+        if vitima_segura == 2:
+            resultado(
+                tipo="VIOLÊNCIA DOMÉSTICA — SITUAÇÃO ATIVA",
+                urgencia="🔴 URGÊNCIA MÁXIMA — Intervenção imediata",
+                artigo="Art. 129 §9º CP + Lei 11.340/2006",
+                orientacao="DESLOCAR VIATURA IMEDIATAMENTE. Separar agressor da vítima. "
+                           "Verificar medida protetiva vigente. "
+                           "Acionar serviço social e delegacia de VD."
+            )
+        else:
+            lesoes = perguntar(
+                "A vítima apresenta lesões visíveis?",
+                ["Sim, lesões graves", "Sim, lesões leves", "Não, mas houve ameaça"]
+            )
+
+            if lesoes == 1:
+                resultado(
+                    tipo="LESÃO CORPORAL DOLOSA GRAVE — VIOLÊNCIA DOMÉSTICA",
+                    urgencia="🔴 URGÊNCIA ALTA",
+                    artigo="Art. 129 §§1º e 9º CP + Lei 11.340/2006",
+                    orientacao="Encaminhar vítima para IML com urgência. "
+                               "Registrar lesões fotograficamente. "
+                               "Verificar necessidade de medida protetiva de urgência."
+                )
+            elif lesoes == 2:
+                resultado(
+                    tipo="LESÃO CORPORAL DOLOSA LEVE — VIOLÊNCIA DOMÉSTICA",
+                    urgencia="🟠 URGÊNCIA MÉDIA-ALTA",
+                    artigo="Art. 129 §9º CP + Lei 11.340/2006",
+                    orientacao="Encaminhar ao IML para exame de corpo de delito. "
+                               "Aplicar formulário de avaliação de risco. "
+                               "Orientar sobre medidas protetivas disponíveis."
+                )
+            else:
+                resultado(
+                    tipo="AMEAÇA — VIOLÊNCIA DOMÉSTICA",
+                    urgencia="🟠 URGÊNCIA MÉDIA",
+                    artigo="Art. 147 CP + Lei 11.340/2006",
+                    orientacao="Colher depoimento detalhado. "
+                               "Verificar histórico de ocorrências anteriores. "
+                               "Orientar vítima sobre medida protetiva preventiva."
+                )
+
+    elif tipo_violencia == 2:
+        resultado(
+            tipo="LESÃO CORPORAL / VIAS DE FATO",
+            urgencia="🟠 URGÊNCIA MÉDIA",
+            artigo="Art. 129 caput CP",
+            orientacao="Verificar se há necessidade de atendimento médico. "
+                       "Identificar envolvidos e possíveis testemunhas. "
+                       "Colher versões separadamente."
+        )
+
+    elif tipo_violencia == 3:
+        resultado(
+            tipo="AMEAÇA",
+            urgencia="🟡 URGÊNCIA BAIXA-MÉDIA",
+            artigo="Art. 147 CP",
+            orientacao="Verificar se há registro de ocorrências anteriores do ameaçador. "
+                       "Orientar sobre medida protetiva se houver relação doméstica. "
+                       "Colher registros (mensagens, áudios) como prova."
+        )
+
+    else:
+        resultado(
+            tipo="HOMICÍDIO OU TENTATIVA — CENA ATIVA",
+            urgencia="🔴 URGÊNCIA MÁXIMA — Protocolo de homicídio",
+            artigo="Art. 121 CP (ou Art. 121 tentativa)",
+            orientacao="ISOLAR A CENA IMEDIATAMENTE. Acionar DHPP/DEIC. "
+                       "Não movimentar nenhum objeto. Registrar testemunhas presentes. "
+                       "Acionar IML. Preservar câmeras de segurança da área."
+        )
+
+def fluxo_fraude():
+    """Sub-fluxo para crimes de fraude e estelionato."""
+    canal = perguntar(
+        "Como o crime foi cometido?",
+        ["Golpe por WhatsApp / ligação falsa (ex: falso banco)",
+         "Compra/venda pela internet (produto não entregue ou falso)",
+         "Fraude documental (documento falso, cheque sem fundo)",
+         "Outro tipo de estelionato"]
+    )
+
+    if canal == 1:
+        valor = perguntar(
+            "Qual o valor aproximado do prejuízo?",
+            ["Acima de R$ 5.000", "Entre R$ 500 e R$ 5.000", "Abaixo de R$ 500"]
+        )
+
+        if valor == 1:
+            resultado(
+                tipo="ESTELIONATO DIGITAL — ALTO VALOR",
+                urgencia="🟠 URGÊNCIA MÉDIA-ALTA",
+                artigo="Art. 171 §2º-A CP",
+                orientacao="Orientar vítima a bloquear transferências com o banco IMEDIATAMENTE. "
+                           "Colher print das conversas e comprovantes. "
+                           "Registrar CNPJ/número usado pelo golpista para investigação."
+            )
+        else:
+            resultado(
+                tipo="ESTELIONATO DIGITAL",
+                urgencia="🟡 URGÊNCIA BAIXA-MÉDIA",
+                artigo="Art. 171 §2º-A CP",
+                orientacao="Colher prints de todas as conversas e comprovantes de transferência. "
+                           "Registrar número/conta usada pelo golpista. "
+                           "Orientar registro no banco e cancelamento de transações."
+            )
+
+    elif canal == 2:
+        resultado(
+            tipo="ESTELIONATO — FRAUDE EM COMÉRCIO ELETRÔNICO",
+            urgencia="🟡 URGÊNCIA BAIXA",
+            artigo="Art. 171 caput CP",
+            orientacao="Colher prints dos anúncios, conversas e comprovantes de pagamento. "
+                       "Registrar dados do vendedor (perfil, CPF/CNPJ se disponível). "
+                       "Orientar registro no PROCON e plataforma utilizada."
+        )
+
+    elif canal == 3:
+        resultado(
+            tipo="FALSIFICAÇÃO DE DOCUMENTO / ESTELIONATO",
+            urgencia="🟠 URGÊNCIA MÉDIA",
+            artigo="Art. 297 e/ou Art. 171 CP",
+            orientacao="Preservar o documento falso como prova (não devolver). "
+                       "Solicitar perícia documental. "
+                       "Identificar o apresentador do documento."
+        )
+
+    else:
+        resultado(
+            tipo="ESTELIONATO",
+            urgencia="🟡 URGÊNCIA BAIXA",
+            artigo="Art. 171 caput CP",
+            orientacao="Colher toda documentação disponível como prova. "
+                       "Identificar o autor se possível. Registrar BO detalhado."
+        )
+
+def iniciar_atendimento():
+    """Fluxo principal do chat de decisão."""
+    exibir_cabecalho()
+
+    print("\n  Bem-vindo ao sistema de triagem de ocorrências.")
+    print("  Vou fazer algumas perguntas para orientar o atendimento.")
+
+    continuar = True
+
+    while continuar:
+        limpar_tela()
+
+        # Coleta do nome da vítima
+        nome = perguntar("Qual o nome da vítima ou solicitante?")
+        if not nome:
+            nome = "não informado"
+
+        print(f"\n  Olá, {nome.split()[0].capitalize()}! Vamos iniciar a triagem.\n")
+
+        # Pergunta principal: tipo de crime
+        categoria = perguntar(
+            "Qual o tipo de ocorrência que deseja registrar?",
+            [
+                "Crime contra o patrimônio (furto, roubo, arrombamento)",
+                "Violência contra a pessoa (agressão, ameaça, homicídio)",
+                "Fraude / estelionato (golpe, fraude digital, engano)",
+                "Não sei classificar / outros"
+            ]
+        )
+
+        limpar_tela()
+
+        if categoria == 1:
+            fluxo_patrimonio()
+        elif categoria == 2:
+            fluxo_violencia_pessoa()
+        elif categoria == 3:
+            fluxo_fraude()
+        else:
+            print("\n  ENCAMINHAMENTO PARA ATENDIMENTO HUMANO")
+            print("-" * 55)
+            print("  Ocorrências não classificadas precisam de análise")
+            print("  de um policial. Dirija-se ao balcão de atendimento")
+            print("  ou ligue 190 para situações de emergência.")
+            print("=" * 55)
+
+        # Pergunta se quer novo atendimento
+        novo = input("\n  Deseja registrar outra ocorrência? (s/n): ").strip().lower()
+        if novo not in ("s", "sim"):
+            continuar = False
+
+    print("\n  Obrigado por usar o sistema de triagem digital.")
+    print("  Em caso de emergência, ligue 190.\n")
+
+# ── Ponto de entrada ─────────────────────────────────────────
+if __name__ == "__main__":
+    iniciar_atendimento()
+# chat_decisao_policial.py
+# Chat de decisão para triagem de boletins de ocorrência
+# Usa apenas Python puro — sem instalar nenhuma biblioteca
+
+
+
+
+
+
+Ex.01 Primeira conversa com o Llama 3 via Python
+
+# modulo0/ex01_primeira_conversa.py
+# Objetivo: primeira interação com o Llama 3 via Python
+# Execute: python ex01_primeira_conversa.py
+
+import ollama    # biblioteca que se comunica com o Ollama local
+
+# ─── Chamada ao modelo ───────────────────────────────────────────
+# ollama.chat() envia uma mensagem para o modelo e retorna a resposta
+# Parâmetros:
+#   model   → nome do modelo que queremos usar
+#   messages → lista de mensagens no formato de chat
+#              cada mensagem tem "role" (quem fala) e "content" (o que diz)
+#              role pode ser: "system", "user", ou "assistant"
+resposta = ollama.chat(
+    model="llama3",
+    messages=[
+        {
+            "role": "system",           # instrução para o modelo
+            "content": "Você é um assistente da Polícia Civil do Brasil. "
+                        "Responda sempre em português de forma profissional."
+        },
+        {
+            "role": "user",             # mensagem do usuário
+            "content": "Olá! Quais são suas principais funções?"
+        }
+    ]
+)
+
+# ─── Estrutura da resposta ───────────────────────────────────────
+# resposta é um dicionário com várias chaves:
+# resposta["message"]            → a mensagem gerada pelo modelo
+# resposta["message"]["role"]    → quem gerou (sempre "assistant")
+# resposta["message"]["content"] → o texto da resposta
+
+print("=== RESPOSTA DO MODELO ===")
+print(resposta["message"]["content"])
+
+print("\n=== INFORMAÇÕES TÉCNICAS ===")
+print(f"Modelo usado:     {resposta['model']}")
+print(f"Tokens na entrada:{resposta['prompt_eval_count']}")
+print(f"Tokens gerados:   {resposta['eval_count']}")
+
+
+
+
+
+
+
+
+
+
+Ex.02 Explorando parâmetros de temperatura
+
+# modulo0/ex02_temperatura.py
+# Objetivo: comparar respostas com diferentes temperaturas
+# A temperatura controla a "criatividade" do modelo:
+#   0.0 → sempre escolhe o token mais provável (determinístico)
+#   0.5 → equilíbrio entre consistência e variação
+#   1.0 → alta variação, mais criativo mas menos consistente
+
+import ollama
+
+PERGUNTA = ("Escreva em 2 frases a definição de 'suspeito' "
+            "para uso em investigação policial.")
+
+# Testar três temperaturas diferentes
+for temperatura in [0.0, 0.5, 1.0]:
+    separador = "=" * 50
+    print(f"\n{separador}")
+    print(f"TEMPERATURA: {temperatura}")
+    print("="*50)
+    
+    # Fazemos 2 chamadas com a mesma temperatura para ver a variação
+    for i in range(2):
+        resposta = ollama.chat(
+            model="llama3",
+            messages=[{"role": "user", "content": PERGUNTA}],
+            options={
+                "temperature": temperatura,  # controla a variação da resposta
+                "num_predict": 100,          # limita a resposta a ~100 tokens
+            }
+        )
+        print(f"\nChamada {i+1}:")
+        print(resposta["message"]["content"])
+
+# Observação esperada:
+# temperatura=0.0 → as 2 chamadas produzem textos idênticos ou muito similares
+# temperatura=1.0 → cada chamada produz um texto diferente
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ex.03 Conversa com Múltiplos Turnos (Histórico)
+# modulo0/ex03_conversa_multiturno.py
+# Objetivo: manter histórico de conversa entre múltiplas perguntas
+
+import ollama
+
+# O histórico é uma lista de mensagens acumuladas
+# Cada nova pergunta e resposta é adicionada à lista
+# O modelo recebe todo o histórico em cada chamada
+historico = [
+    {
+        "role": "system",
+        "content": ("Você é AgenteBO, assistente da Polícia Civil. "
+                    "Especializado em legislação criminal e procedimentos policiais. "
+                    "Sempre responda em português e de forma precisa.")
+    }
+]
+
+# Simular uma conversa com 4 turnos
+perguntas = [
+    "Qual é a diferença entre furto e roubo?",
+    "Quais são as penas previstas para cada um?",
+    "E quando há violência no furto, muda a tipificação?",
+    "Cite o artigo do Código Penal que trata disso.",
+]
+
+for pergunta in perguntas:
+    print(f"\n👤 USUÁRIO: {pergunta}")
+    
+    # Adiciona a pergunta do usuário ao histórico
+    historico.append({
+        "role": "user",
+        "content": pergunta
+    })
+    
+    # Envia o histórico COMPLETO ao modelo
+    # Isso é o que permite ao modelo "lembrar" o contexto anterior
+    resposta = ollama.chat(
+        model="llama3",
+        messages=historico,          # envia toda a conversa até agora
+        options={"temperature": 0.1} # baixa temperatura para respostas precisas
+    )
+    
+    # Extrai o texto da resposta
+    texto_resposta = resposta["message"]["content"]
+    
+    # Adiciona a resposta do assistente ao histórico
+    historico.append({
+        "role": "assistant",
+        "content": texto_resposta
+    })
+    
+    print(f"🤖 AGENTE: {texto_resposta[:300]}...")
+
+print(f"\nTotal de mensagens no histórico: {len(historico)}")
+print(f"(1 system + {len(perguntas)} perguntas + {len(perguntas)} respostas)")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ex.04 Listar e Gerenciar Modelos com Python
+
+# modulo0/ex04_gerenciar_modelos.py
+# Objetivo: listar e comparar modelos disponíveis no Ollama
+
+import ollama   # cliente do Ollama
+import time     # para medir o tempo de resposta
+
+# ─── Listar todos os modelos instalados ─────────────────────────
+print("=== MODELOS INSTALADOS NO OLLAMA ===")
+lista_modelos = ollama.list()    # retorna dicionário com chave "models"
+
+for modelo in lista_modelos["models"]:
+    # Cada "modelo" é um dicionário com: name, size, digest, modified_at
+    nome      = modelo["name"]
+    tamanho   = modelo.get("size", 0) / (1024**3)  # converte bytes → GB
+    print(f"  • {nome:<30} {tamanho:.1f} GB")
+
+# ─── Comparar velocidade de dois modelos ────────────────────────
+print("\n=== COMPARAÇÃO DE VELOCIDADE ===")
+PERGUNTA_TESTE = "Em uma frase: o que é uma delegacia de polícia?"
+
+for nome_modelo in ["llama3", "mistral"]:
+    try:
+        inicio = time.time()  # registra o tempo antes da chamada
+        
+        resp = ollama.chat(
+            model=nome_modelo,
+            messages=[{"role": "user", "content": PERGUNTA_TESTE}],
+            options={"temperature": 0, "num_predict": 50}
+        )
+        
+        duracao = time.time() - inicio  # calcula o tempo decorrido
+        tokens  = resp.get("eval_count", 0)  # tokens gerados
+        
+        print(f"\n  Modelo: {nome_modelo}")
+        print(f"  Tempo:  {duracao:.2f}s")
+        print(f"  Tokens: {tokens} ({tokens/duracao:.0f} tok/s)")
+        print(f"  Resp:   {resp['message']['content'][:150]}")
+    except Exception as e:
+        print(f"  {nome_modelo}: não disponível ({e})")
+
+
+
+
+
+
+
+
+
+
+
+Ex.05 Lendo e Processando Arquivos de Texto 
+
+# modulo0/ex05_processar_documento.py
+
+
+import ollama
+import json   # para trabalhar com dados estruturados
+
+# ─── Criar um BO fictício para teste ────────────────────────────
+# Em produção, este texto viria de um arquivo real
+BO_FICTICIO = """
+BOLETIM DE OCORRÊNCIA Nº 2025/004521
+Data: 15/03/2025  Hora: 14h32  Delegacia: 1ª DP - Centro
+Natureza: Furto (Art. 155 CP)
+
+Vítima: João Carlos Pereira, 34 anos, RG 12.345.678-9
+Endereço: Rua das Flores, 123, Apto 45 - Jardim Primavera
+
+Relato: O declarante informa que deixou seu veículo, um Chevrolet Onix
+2022, placas ABC-1234, cor prata, estacionado na Rua XV de Novembro
+às 13h00. Ao retornar às 14h20 constatou o desaparecimento do aparelho
+celular iPhone 15 Pro Max que estava no banco do passageiro.
+Valor estimado do bem: R$ 8.500,00.
+Suspeitos: não identificados.
+"""
+
+# Salvar o BO em arquivo (simulando um arquivo real)
+with open("bo_teste.txt", "w", encoding="utf-8") as arquivo:
+    arquivo.write(BO_FICTICIO)
+
+# ─── Ler o arquivo ───────────────────────────────────────────────
+# Em produção, leria o BO do sistema de gestão
+with open("bo_teste.txt", "r", encoding="utf-8") as arquivo:
+    conteudo = arquivo.read()
+
+# ─── Extrair informações com o LLM ──────────────────────────────
+prompt = f"""Analise o boletim de ocorrência abaixo e extraia as informações
+em formato JSON com os seguintes campos:
+- numero_bo: número do boletim
+- data: data da ocorrência
+- natureza: tipo de crime
+- artigo_cp: artigo do Código Penal
+- vitima: nome da vítima
+- bem_subtraido: descrição do bem
+- valor: valor em reais
+- local: local do crime
+
+Retorne APENAS o JSON, sem explicações.
+
+Boletim:
+{conteudo}
+"""
+
+resposta = ollama.chat(
+    model="llama3",
+    messages=[{"role": "user", "content": prompt}],
+    format="json",           # força retorno em JSON válido
+    options={"temperature": 0}  # temperatura 0 para precisão máxima
+)
+
+# ─── Processar o JSON retornado ─────────────────────────────────
+try:
+    dados = json.loads(resposta["message"]["content"])
+    print("=== DADOS EXTRAÍDOS DO BO ===")
+    for chave, valor in dados.items():
+        print(f"  {chave:<20}: {valor}")
+except json.JSONDecodeError as e:
+    print(f"Erro ao parsear JSON: {e}")
+    print("Resposta bruta:", resposta["message"]["content"])
+
+
+
+
+
+
+
+
+
+
+Ex.06 Criar uma função Python reutilizável para o Agente. 
+
+# modulo0/ex06_funcoes_base.py
+import ollama
+import json
+from typing import Optional    # para tipagem opcional
+
+# ─── Função 1: chat simples ──────────────────────────────────────
+def chat(mensagem: str,
+         modelo: str = "llama3",
+         temperatura: float = 0.1,
+         sistema: Optional[str] = None) -> str:
+    """
+    Envia uma mensagem ao LLM e retorna a resposta como string.
+    
+    Parâmetros:
+        mensagem:    texto do usuário
+        modelo:      nome do modelo Ollama (padrão: llama3)
+        temperatura: criatividade do modelo (0=determinístico, 1=criativo)
+        sistema:     instrução de sistema (persona do assistente)
+    
+    Retorna:
+        texto da resposta do modelo
+    """
+    mensagens = []
+    
+    # Adiciona instrução de sistema se fornecida
+    if sistema:
+        mensagens.append({"role": "system", "content": sistema})
+    
+    # Adiciona a mensagem do usuário
+    mensagens.append({"role": "user", "content": mensagem})
+    
+    # Faz a chamada ao Ollama
+    resposta = ollama.chat(
+        model=modelo,
+        messages=mensagens,
+        options={"temperature": temperatura}
+    )
+    
+    # Retorna apenas o texto da resposta
+    return resposta["message"]["content"]
+
+
+# ─── Função 2: chat com saída JSON ──────────────────────────────
+def chat_json(mensagem: str,
+              modelo: str = "llama3",
+              sistema: Optional[str] = None) -> dict:
+    """
+    Envia uma mensagem ao LLM e retorna a resposta como dicionário.
+    Garante retorno em JSON válido usando format="json".
+    
+    Retorna:
+        dicionário Python com os dados extraídos
+        dicionário vazio em caso de erro
+    """
+    mensagens = []
+    if sistema:
+        mensagens.append({"role": "system", "content": sistema})
+    mensagens.append({"role": "user", "content": mensagem})
+    
+    resposta = ollama.chat(
+        model=modelo,
+        messages=mensagens,
+        format="json",               # força JSON válido
+        options={"temperature": 0}   # temperatura 0 para JSON confiável
+    )
+    
+    try:
+        return json.loads(resposta["message"]["content"])
+    except json.JSONDecodeError:
+        return {}  # retorna dicionário vazio se JSON inválido
+
+
+# ─── Testes das funções ─────────────────────────────────────────
+if __name__ == "__main__":
+    # Teste 1: chat simples
+    print("=== TESTE 1: CHAT SIMPLES ===")
+    SISTEMA_POLICIAL = ("Você é um assistente jurídico da Polícia Civil. "
+                        "Responda de forma concisa e técnica.")
+    
+    resposta = chat(
+        mensagem="O que é o flagrante delito?",
+        sistema=SISTEMA_POLICIAL
+    )
+    print(resposta)
+    
+    # Teste 2: extração de JSON
+    print("\n=== TESTE 2: EXTRAÇÃO DE DADOS EM JSON ===")
+    dados = chat_json(
+        mensagem=("Extraia em JSON: vitima, crime, local. "
+                  "Texto: 'Maria sofreu furto de bolsa na Av. Paulista.'")
+    )
+    print(json.dumps(dados, ensure_ascii=False, indent=2))
+
+
+
+
+
+
+
+
+
+
+Ex.07 Classificador de boletins de ocorrência 
+
+# modulo0/ex07_classificador_bo.py
+import ollama
+import json
+
+# ─── Tipos de crime para classificação ──────────────────────────
+TIPOS_CRIME = [
+    "Furto",
+    "Roubo",
+    "Estelionato",
+    "Ameaça",
+    "Lesão Corporal",
+    "Tráfico de Drogas",
+    "Crime Digital",
+    "Outros",
+]
+
+# ─── BOs para classificação ─────────────────────────────────────
+BOS_TESTE = [
+    "Vítima relata que foi abordada por dois indivíduos armados que levaram seu celular e carteira.",
+    "Declarante informa que comprou produto pela internet mas nunca recebeu e o vendedor não atende.",
+    "Vítima recebeu mensagens ameaçadoras de seu ex-companheiro pelo WhatsApp.",
+    "Furto de notebook do interior de veículo estacionado.",
+]
+
+# ─── Função classificadora ──────────────────────────────────────
+def classificar_bo(relato: str) -> dict:
+    """
+    Classifica um boletim de ocorrência por tipo de crime.
+    
+    Parâmetros:
+        relato: texto descritivo do BO
+    Retorna:
+        dicionário com tipo, artigo CP, urgência e resumo
+    """
+    tipos_str = ", ".join(TIPOS_CRIME)  # converte lista em texto
+    
+    prompt = f"""Você é um delegado experiente da Polícia Civil.
+Analise o relato abaixo e classifique o crime.
+
+Tipos disponíveis: {tipos_str}
+
+Retorne JSON com:
+- tipo: o tipo do crime (exatamente como listado acima)
+- artigo_cp: artigo do Código Penal ou Código Penal Militar
+- urgencia: ALTA, MEDIA ou BAIXA
+- resumo: resumo em 1 frase
+- flagrante: true ou false (há possibilidade de flagrante?)
+
+Relato: {relato}
+"""
+    
+    resposta = ollama.chat(
+        model="llama3",
+        messages=[{"role": "user", "content": prompt}],
+        format="json",
+        options={"temperature": 0}  # temperatura 0 para classificação precisa
+    )
+    
+    try:
+        return json.loads(resposta["message"]["content"])
+    except:
+        return {"tipo": "Outros", "urgencia": "MEDIA", "erro": "falha no parse"}
+
+# ─── Executar classificação ──────────────────────────────────────
+print("=== CLASSIFICADOR AUTOMÁTICO DE BOs ===")
+print()
+
+for i, bo in enumerate(BOS_TESTE, 1):
+    print(f"BO #{i}: {bo[:60]}...")
+    resultado = classificar_bo(bo)
+    print(f"  Tipo:      {resultado.get('tipo')}")
+    print(f"  Artigo:    {resultado.get('artigo_cp')}")
+    print(f"  Urgência:  {resultado.get('urgencia')}")
+    print(f"  Flagrante: {resultado.get('flagrante')}")
+    print(f"  Resumo:    {resultado.get('resumo')}")
+    print()
+Ex.08 Gerador de Relatório Policial 
+
+# modulo0/ex08_gerador_relatorio.py
+import ollama
+from datetime import datetime  # para trabalhar com datas
+
+# ─── Dados de entrada (simulando sistema de gestão) ─────────────
+DADOS_BO = {
+    "numero":       "2025/004521",
+    "data":         "15/03/2025",
+    "hora":         "14h32",
+    "delegacia":    "1ª DP - Centro",
+    "natureza":     "Furto qualificado (Art. 155, §4º, I do CP)",
+    "vitima":       "João Carlos Pereira, 34 anos",
+    "bem":          "iPhone 15 Pro Max",
+    "valor":        "R$ 8.500,00",
+    "local":        "Rua XV de Novembro, Centro",
+    "suspeitos":    "Não identificados",
+    "testemunhas":  "Nenhuma localizada",
+}
+
+# ─── Função geradora de relatório ───────────────────────────────
+def gerar_relatorio(dados: dict, tipo_relatorio: str = "inicial") -> str:
+    """
+    Gera relatório policial a partir de dados estruturados.
+    
+    Parâmetros:
+        dados:          dicionário com os dados do BO
+        tipo_relatorio: "inicial", "investigacao" ou "conclusao"
+    Retorna:
+        texto do relatório formatado
+    """
+    # Converte o dicionário em texto legível para o modelo
+    dados_texto = "\n".join([f"  {k}: {v}" for k, v in dados.items()])
+    
+    prompt = f"""Você é um escrivão de polícia sênior.
+Gere um relatório policial {tipo_relatorio} profissional e formal com base
+nos dados abaixo. Use linguagem técnica e jurídica adequada.
+Estruture em parágrafos: Dos Fatos, Da Qualificação das Partes,
+Das Diligências Iniciais, Das Conclusões Preliminares.
+
+Dados do BO:
+{dados_texto}
+
+Data de geração: {datetime.now().strftime("%d/%m/%Y às %H:%M")}
+"""
+    
+    resposta = ollama.chat(
+        model="llama3",
+        messages=[{"role": "user", "content": prompt}],
+        options={
+            "temperature": 0.3,   # leve criatividade para redigir bem
+            "num_predict": 800,   # relatório longo
+        }
+    )
+    return resposta["message"]["content"]
+
+# ─── Gerar e exibir o relatório ─────────────────────────────────
+print("=== GERANDO RELATÓRIO POLICIAL ===")
+relatorio = gerar_relatorio(DADOS_BO, "inicial")
+print(relatorio)
+
+# Salvar em arquivo
+nome_arquivo = f"relatorio_bo_{DADOS_BO['numero'].replace('/','_')}.txt"
+with open(nome_arquivo, "w", encoding="utf-8") as f:
+    f.write(relatorio)
+print(f"\n✅ Relatório salvo em: {nome_arquivo}")
+
+
+
+
+
+
+
+
+
+
+Ex.09 Analisador de consistência de depoimentos 
+
+# modulo0/ex09_analise_depoimentos_v2.py
+
+import ollama
+import json
+
+# ─── Depoimentos fictícios para análise ─────────────────────────
+DEPOIMENTO_VITIMA = """
+Eu estava na padaria às 13h00 quando dois homens entraram e anunciaram o assalto.
+Um deles usava camiseta vermelha e o outro estava de jaqueta preta.
+Eles ficaram cerca de 10 minutos no local. Fugiram em um carro branco.
+Era um Fiat Uno. Não consegui ver as placas.
+"""
+
+DEPOIMENTO_TESTEMUNHA = """
+Vi dois rapazes saindo correndo da padaria por volta de 13h45.
+Um usava blusa azul e o outro de blusão escuro.
+Entraram num veículo de cor prata — me pareceu um Gol.
+O ocorrido durou uns 5 minutos no máximo.
+"""
+
+def debug_print(titulo: str, conteudo: str) -> None:
+    """Mostra a resposta crua do modelo para facilitar diagnóstico."""
+    print(f"\n{'=' * 60}")
+    print(f"DEBUG — {titulo}")
+    print('=' * 60)
+    print(conteudo)
+    print('=' * 60 + "\n")
+
+def normalizar_lista(dados: dict, chave_principal: str, alternativas: list) -> list:
+    """
+    Garante que sempre retornamos uma lista, mesmo que o modelo
+    tenha usado um nome de chave diferente do esperado.
+    """
+    if dados.get(chave_principal):
+        valor = dados[chave_principal]
+        return valor if isinstance(valor, list) else [valor]
+
+    for alt in alternativas:
+        if dados.get(alt):
+            valor = dados[alt]
+            return valor if isinstance(valor, list) else [valor]
+
+    return []
+
+def analisar_contradicoes(dep1: str, dep2: str,
+                           nome1: str = "Vítima",
+                           nome2: str = "Testemunha") -> dict:
+    """
+    Compara dois depoimentos e identifica divergências.
+    Útil em investigações para apontar inconsistências.
+
+    Retorna dicionário com:
+        contradicoes:     lista de contradições encontradas
+        elementos_comuns: pontos em que concordam
+        credibilidade:    avaliação geral de credibilidade
+        recomendacao:     próximas diligências sugeridas
+        resumo_analise:   parágrafo com a análise geral
+    """
+    prompt = f"""Você é um investigador experiente da Polícia Civil.
+Compare os dois depoimentos abaixo, frase por frase, e identifique
+TODAS as contradições factuais entre eles.
+
+Depoimento da {nome1}:
+{dep1}
+
+Depoimento da(o) {nome2}:
+{dep2}
+
+Preste atenção especial a estas três categorias de divergência:
+1. HORÁRIO mencionado por cada depoente
+2. DESCRIÇÃO das roupas/aparência dos suspeitos
+3. VEÍCULO usado na fuga (cor e modelo)
+
+Retorne APENAS um JSON válido EXATAMENTE neste formato, sem texto adicional:
+{{
+  "contradicoes": [
+    "Divergência de horário: vítima diz 13h00, testemunha diz 13h45",
+    "Divergência na descrição das roupas: ...",
+    "Divergência no veículo: ..."
+  ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ex.10 Pipeline completo: BO -> Análise -> Relatório 
+
+# modulo0/ex10_pipeline_bo_corrigido.py
+
+import ollama
+import json
+import time
+
+# ─── BO de entrada ──────────────────────────────────────────────
+BO_ENTRADA = """
+BOLETIM DE OCORRÊNCIA Nº 2025/007890
+Data: 20/03/2025  Hora: 09h15  Delegacia: 5ª DP - Vila Nova
+
+Vítima: Ana Paula Rodrigues, 28 anos, balconista
+RG: 45.678.901-2  CPF: 123.456.789-00
+Tel: (11) 99876-5432
+
+Relato: A declarante informa que recebeu ligação de suposto funcionário
+do banco informando que sua conta havia sido bloqueada. O indivíduo
+solicitou que ela instalasse um aplicativo no celular e fornecesse
+seus dados bancários para desbloqueio. Após seguir as instruções,
+percebeu que R$ 4.200,00 foram transferidos de sua conta sem autorização.
+
+Suspeitos: Não identificados. Ligação feita de número não cadastrado.
+"""
+
+def debug_print(titulo: str, conteudo: str) -> None:
+    """Mostra a resposta crua do modelo para facilitar diagnóstico."""
+    print(f"\n--- DEBUG: {titulo} ---")
+    print(conteudo)
+    print("--- FIM DEBUG ---\n")
+
+# ─── Etapa 1: Classificar o crime ───────────────────────────────
+def etapa1_classificar(bo_texto: str) -> dict:
+    """
+    Etapa 1: identifica o tipo de crime do BO.
+    CORREÇÃO: prompt explícito com formato exato esperado,
+    evitando que o modelo use nomes de chave diferentes.
+    """
+    print("  [1/4] Classificando crime...")
+
+    prompt = f"""Você é um especialista em tipificação penal da Polícia Civil.
+Analise o boletim de ocorrência abaixo e classifique o crime.
+
+Boletim de Ocorrência:
+{bo_texto}
+
+Retorne APENAS um JSON válido EXATAMENTE neste formato, sem nenhum texto adicional:
+{{
+  "tipo": "nome do crime (ex: estelionato, furto, roubo)",
+  "artigo_cp": "artigo do Código Penal aplicável, no formato Art. XXX",
+  "urgencia": "ALTA ou MEDIA ou BAIXA"
+}}"""
+
+    resposta = ollama.chat(
+        model="llama3",
+        messages=[{"role": "user", "content": prompt}],
+        format="json", options={"temperature": 0}
+    )
+
+    bruto = resposta["message"]["content"]
+    debug_print("Etapa 1 - Classificação", bruto)
+
+    dados = json.loads(bruto)
+
+    # ── Normalização: aceita variações de nome de chave que o modelo
+    #    às vezes usa, garantindo que sempre teremos "tipo" preenchido ──
+    if not dados.get("tipo"):
+        for chave_alternativa in ["tipo_crime", "classificacao", "crime", "tipificacao"]:
+            if dados.get(chave_alternativa):
+                dados["tipo"] = dados[chave_alternativa]
+                break
+
+    return dados
+
+# ─── Etapa 2: Extrair dados estruturados ────────────────────────
+def etapa2_extrair(bo_texto: str) -> dict:
+    """Etapa 2: extrai dados estruturados do BO."""
+    print("  [2/4] Extraindo dados estruturados...")
+
+    prompt = f"""Extraia as informações do boletim de ocorrência abaixo.
+
+Boletim de Ocorrência:
+{bo_texto}
+
+Retorne APENAS um JSON válido EXATAMENTE neste formato, sem texto adicional:
+{{
+  "vitima": "nome da vítima",
+  "crime": "resumo curto do que aconteceu",
+  "prejuizo": "valor do prejuízo financeiro, se houver (ex: R$ 4.200,00)",
+  "suspeitos": "descrição dos suspeitos ou 'não identificados'",
+  "modo_operandi": "breve descrição de como o crime foi cometido"
+}}"""
+
+    resposta = ollama.chat(
+        model="llama3",
+        messages=[{"role": "user", "content": prompt}],
+        format="json", options={"temperature": 0}
+    )
+
+    bruto = resposta["message"]["content"]
+    debug_print("Etapa 2 - Extração", bruto)

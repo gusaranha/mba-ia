@@ -1,0 +1,15 @@
+# Dependências consolidadas dos exercícios de src/aula01/
+# NÃO instaladas automaticamente — instale manualmente se necessário:
+#   pip install -r requirements.txt
+#
+# Usado por: ex01, ex02, ex03, ex04, ex05, ex06, ex07, ex08, ex09, ex10
+ollama
+
+# ex00_chatbot_triagem_bo.py não requer nenhuma dependência externa
+# (usa apenas biblioteca padrão do Python).
+#
+# Todos os exercícios que usam "ollama" também requerem o servidor
+# Ollama rodando localmente (https://ollama.com) com os modelos
+# utilizados já baixados, por exemplo:
+#   ollama pull llama3
+#   ollama pull mistral   (usado apenas em ex04)
