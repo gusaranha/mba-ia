@@ -1,0 +1,23 @@
+# Dependências para E1 - Anatomia do Agente
+# Copie este arquivo para sua pasta agente_pratica/
+# Use: pip install -r requirements.txt
+
+# LangChain e integrações
+langchain
+langchain_ollama
+langchain-core
+
+# Suporte a diferentes tipos de dados
+requests
+pydantic
+
+# Ferramentas e utilities
+python-dotenv
+colorama
+
+# Opcional: melhor output
+rich
+tabulate
+
+# Versionamento (para verificações)
+packaging
