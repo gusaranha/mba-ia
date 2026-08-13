@@ -3,3 +3,13 @@
 /exemplo-docker/.terraform/
 /exemplo-zip/.terraform/
 /exemplo-ssh/.terraform/
+/terraform.tfstate
+/terraform.tfstate.backup
+/exemplo-credenciais/terraform.tfstate
+/exemplo-credenciais/terraform.tfstate.backup
+/exemplo-docker/terraform.tfstate
+/exemplo-docker/terraform.tfstate.backup
+/exemplo-ssh/terraform.tfstate
+/exemplo-ssh/terraform.tfstate.backup
+/exemplo-zip/terraform.tfstate
+/exemplo-zip/terraform.tfstate.backup
