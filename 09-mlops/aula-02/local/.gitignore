@@ -1,0 +1,5 @@
+/.terraform/
+/exemplo-credenciais/.terraform/
+/exemplo-docker/.terraform/
+/exemplo-zip/.terraform/
+/exemplo-ssh/.terraform/
