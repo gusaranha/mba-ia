@@ -1,44 +1,4 @@
 
-
-### git version
-```
-(venv_rag) gustavoaranha@Gustavos-iMac local % git --version
-git version 2.50.1 (Apple Git-155)
-```
-
-### python version
-```
-gustavoaranha@Gustavos-iMac local % python3 --version
-Python 3.14.6    
-```
-
-### docker version
-```
-gustavoaranha@Gustavos-iMac local % docker --version
-Docker version 29.7.2, build a7dcaa6
-```
-
-### azure version
-```
-gustavoaranha@Gustavos-iMac local % az --version
-azure-cli                         2.89.1
-
-core                              2.89.1
-telemetry                          1.1.0
-
-Dependencies:
-msal                              1.36.0
-azure-mgmt-resource               24.0.0
-
-Python location '/usr/local/Cellar/azure-cli/2.89.1/libexec/bin/python'
-Config directory '/Users/gustavoaranha/.azure'
-Extensions directory '/Users/gustavoaranha/.azure/cliextensions'
-
-Python (Darwin) 3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 17.0.0 (clang-1700.6.4.2)]
-
-Legal docs and information: aka.ms/AzureCliLegal
-```
-
 ### local
 ```
 gustavoaranha@Gustavos-iMac aula-02 % cd local/
