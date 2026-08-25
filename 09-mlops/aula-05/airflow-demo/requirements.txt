@@ -1,0 +1,8 @@
+# Aula 05 -- dependencias Python testadas nesta revisao (24/08/2026).
+# Instale com: pip install -r requirements_aula5.txt
+# (Linux/WSL2: use --break-system-packages se o pip reclamar de
+# "externally-managed-environment", ou crie um venv com python3 -m venv .venv)
+
+pandas==2.3.3
+scikit-learn==1.7.2
+kfp==2.17.0
