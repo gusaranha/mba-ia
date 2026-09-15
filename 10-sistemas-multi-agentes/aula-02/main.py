@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from agents import Runner
 from agente_1 import executar_agente
 from agente_handoff_1 import executar_agente_handoff
+from agente_handoff_2 import executar_agente_handoff
 
 app = FastAPI()
 
@@ -27,7 +28,16 @@ def perguntar_tools(pergunta: Pergunta):
     }
 
 
-@app.post("/handoff")
+@app.post("/handoff_1")
+def perguntar_tools(pergunta: Pergunta):
+    resultado = executar_agente_handoff(pergunta.mensagem)
+    return {
+        "pergunta": pergunta.mensagem,
+        "mensagem": resultado
+    }
+
+
+@app.post("/handoff_2")
 def perguntar_tools(pergunta: Pergunta):
     resultado = executar_agente_handoff(pergunta.mensagem)
     return {
