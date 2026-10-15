@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="lab-token" content="{{ token }}"><title>{% block title %}Circuito · Loja de laboratório{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="lab-banner">AMBIENTE FICTÍCIO DE APRENDIZAGEM <span>Sem pagamento. Sem entrega real.</span></div>
+<header class="header"><a class="brand" href="/" aria-label="Circuito, início"><span class="brand-symbol">c.</span> circuito<span class="brand-dot">®</span></a><nav aria-label="Menu principal"><a href="/" {% if request.path == '/' %}aria-current="page"{% endif %}>Loja</a><a href="/painel" {% if request.path == '/painel' %}aria-current="page"{% endif %}>Painel de vendas</a></nav><span class="lab-pill"><i></i> Loja demo</span></header>
+{% block content %}{% endblock %}
+<footer><a class="brand small" href="/">circuito.</a><p>Produtos e vendas sintéticos para o laboratório de LLM e MCP.</p><span>Feito para experimentar.</span></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+{% block scripts %}{% endblock %}
+</body></html>
