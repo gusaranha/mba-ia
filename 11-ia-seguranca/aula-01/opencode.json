@@ -4,8 +4,8 @@
     "loja": {
       "type": "local",
       "command": [
-        ".\\.venv\\Scripts\\python.exe",
-        ".\\servidor_mcp.py"
+        "/Users/gustavoaranha/PycharmProjects/mba-ia/11-ia-seguranca/aula-01/.venv/bin/python",
+        "/Users/gustavoaranha/PycharmProjects/mba-ia/11-ia-seguranca/aula-01/servidor_mcp.py"
       ],
       "enabled": true
     }
